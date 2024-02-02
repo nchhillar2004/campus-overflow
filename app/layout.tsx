@@ -43,7 +43,7 @@ export default async function RootLayout({
                             <SubNavbar />
                         </header>
                         <Toaster />
-                        <main className="pt-5 h-full">
+                        <main className="p-5 h-fit">
                             <div className="bhfs w-[90%] h-full m-auto">
                                 {children}
                             </div>

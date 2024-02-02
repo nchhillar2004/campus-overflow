@@ -11,7 +11,7 @@ export default function Login() {
     const session = useSession();
 
     useEffect(() => {
-        if(session?.status === "authenticated") {
+        if (session?.status === "authenticated") {
             router.replace("/");
         }
     }, [session, router]);
@@ -33,37 +33,51 @@ export default function Login() {
                     password,
                 });
 
-                if(res?.error){
+                if (res?.error) {
                     toast.error("Invalid username or password.");
                     if (res?.url) router.replace("/");
-                }else{
+                } else {
                     console.log("");
-                    
                 }
-            } catch (error) {
-                
-            }
+            } catch (error) {}
         }
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <div className="card">
-                <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Username" name="username" id="username" />
+        <div className="flex justify-center">
+            <div className="card bg-gray-100 rounded border border-gray-200 p-4 lg:w-[40%] text-center">
+                <h1 className="text-2xl font-semibold mb-4">Login</h1>
+                <form onSubmit={handleSubmit} className="inputfld">
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        id="username"
+                    />
                     <input
                         type="password"
                         name="password"
                         id="password"
                         placeholder="Password"
                     />
-                    <button type="submit"> Login</button>
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                    >
+                        {" "}
+                        Login
+                    </button>
                     <hr />
-                    <p>or</p>
+                    <p className="py-2 font-medium">or</p>
                 </form>
+
+                <Link
+                    href="/auth/register"
+                    className="block text-center w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                >
+                    Register
+                </Link>
             </div>
-            <Link href="/auth/register">Register</Link>
         </div>
     );
 }

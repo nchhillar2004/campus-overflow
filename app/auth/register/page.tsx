@@ -41,59 +41,60 @@ export default function Register() {
         } else {
             try {
                 const full_name = fname + " " + lname;
-                
+
                 const res = await fetch("/api/register", {
                     method: "POST",
                     headers: {
-                        "Content-Type" : "application/json",
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         full_name,
                         username,
                         email,
-                        password
-                    })
-                })
-                if (res.status === 400){
+                        password,
+                    }),
+                });
+                if (res.status === 400) {
                     toast.error("Username already registered");
                 }
-                if (res.status === 200){
+                if (res.status === 200) {
                     toast.success("Signed up");
-                    router.push('/auth/login');
+                    router.push("/auth/login");
                 }
             } catch (error) {
                 console.log("Error in sign up");
-                
             }
         }
     };
 
     return (
-        <div>
-            <h1>Register</h1>
-            <div className="card">
-                <form onSubmit={handleSubmit}>
+        <div className="flex justify-center">
+            <div className="card bg-gray-100 rounded border border-gray-200 p-4 lg:w-[40%] text-center">
+                <h1 className="text-2xl font-semibold mb-4">Register</h1>
+                <form onSubmit={handleSubmit} className="inputfld">
+                    <div className="flex inputfld justify-between items-center">
                     <input
                         type="text"
                         placeholder="First name"
                         id="firstname"
                         name="given-name"
+                        className="mr-2"
                     />
                     <input
                         type="text"
                         placeholder="Last name"
                         id="lastname"
                         name="last-name"
-                    />
+                    /></div>
                     <input
                         type="text"
-                        placeholder="username"
+                        placeholder="Create a username"
                         name="username"
                         id="username"
                     />
                     <input
                         type="text"
-                        placeholder="email"
+                        placeholder="Email address"
                         name="email"
                         id="email"
                     />
@@ -101,14 +102,25 @@ export default function Register() {
                         type="password"
                         name="password"
                         id="password"
-                        placeholder="password"
+                        placeholder="Create Password"
                     />
-                    <button type="submit">Register</button>
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                    >
+                        {" "}
+                        Register
+                    </button>
                     <hr />
-                    <p>or</p>
+                    <p className="py-2 font-medium">or</p>
                 </form>
+                <Link
+                    href="/auth/login"
+                    className="block text-center w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                >
+                    Login
+                </Link>
             </div>
-            <Link href="/auth/login">Login</Link>
         </div>
     );
 }
