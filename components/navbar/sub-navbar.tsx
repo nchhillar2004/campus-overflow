@@ -9,7 +9,7 @@ export default function SubNavbar() {
     return (
         <div className="sub-navbar w-full bg-[#232a35] h-9">
             <div className="sub-navbar-container w-[90%] m-auto h-full flex justify-between">
-                <nav className="flex h-full text-nowrap overflow-x-hidden">
+                <nav className="flex h-full text-nowrap overflow-x-hidden desktop-menu">
                     <SubNavButton href="/" name="Locate us" />
                     <SubNavButton href="/" name="Mail us" />
                     <SubNavButton href="/contact/form" name="Contact form" />

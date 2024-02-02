@@ -44,7 +44,7 @@ export default async function RootLayout({
                         </header>
                         <Toaster />
                         <main className="p-5 h-fit min-h-[50%]">
-                            <div className="bhfs w-[90%] h-full m-auto">
+                            <div className="bhfs w-full lg:w-[90%] h-full m-auto">
                                 {children}
                             </div>
                         </main>

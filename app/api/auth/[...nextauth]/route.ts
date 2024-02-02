@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import Users from "@/models/UserSchema";
 import connect from "@/db/conn";
 import bcrypt from "bcryptjs";
+import { Account, User as AuthUser } from "next-auth";
 
 const authOptions: AuthOptions = {
     providers: [
@@ -36,6 +37,13 @@ const authOptions: AuthOptions = {
             },
         }),
     ],
+    callbacks: {
+        async signIn({ user, account }: { user: AuthUser; account: Account }) {
+            if (account?.provider == "credentials") {
+                return true;
+            }
+        },
+    },
 };
 
 const handler = NextAuth(authOptions);

@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
+import { postSchema } from "./PostSchema"
 
-const userSchema = new mongoose.Schema(
+export const userSchema = new mongoose.Schema(
     {
         full_name: {
             type: String,
-            required: true
+            required: true,
         },
         username: {
             type: String,
@@ -19,10 +20,46 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        posts: [postSchema],
+        likedPosts: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Post",
+            },
+        ],
+        questions: [
+            {
+                text: String,
+                author: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "User",
+                },
+                answers: [
+                    {
+                        text: String,
+                        author: {
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: "User",
+                        },
+                        createdAt: {
+                            type: Date,
+                            default: Date.now,
+                        },
+                    },
+                ],
+                createdAt: {
+                    type: Date,
+                    default: Date.now,
+                },
+            },
+        ],
+        createdAt: {
+            type: Date,
+            default: Date.now,
+        },
     },
-    {timestamps: true}
-)
+    { timestamps: true }
+);
 
-const Users = mongoose.models.User || mongoose.model("USER", userSchema);
-
+const Users = mongoose.models.Users || mongoose.model("Users", userSchema);
 export default Users;

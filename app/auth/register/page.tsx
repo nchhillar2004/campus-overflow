@@ -1,11 +1,19 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function Register() {
     const router = useRouter();
+    const { data: session, status: sessionStatus } = useSession();
+
+    useEffect(() => {
+        if (sessionStatus === "authenticated") {
+            router.replace("/dashboard");
+        }
+    }, [sessionStatus, router]);
 
     const isEmailValid = (email: string) => {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -67,60 +75,64 @@ export default function Register() {
         }
     };
 
+    if (sessionStatus === "loading") {
+        return <h1>Loading...</h1>;
+    }
+
     return (
-        <div className="flex justify-center">
-            <div className="card bg-gray-100 rounded border border-gray-200 p-4 lg:w-[40%] text-center">
-                <h1 className="text-2xl font-semibold mb-4">Register</h1>
-                <form onSubmit={handleSubmit} className="inputfld">
-                    <div className="flex inputfld justify-between items-center">
-                    <input
-                        type="text"
-                        placeholder="First name"
-                        id="firstname"
-                        name="given-name"
-                        className="mr-2"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Last name"
-                        id="lastname"
-                        name="last-name"
-                    /></div>
-                    <input
-                        type="text"
-                        placeholder="Create a username"
-                        name="username"
-                        id="username"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Email address"
-                        name="email"
-                        id="email"
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Create Password"
-                    />
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        sessionStatus !== "authenticated" && (
+            <div className="flex justify-center">
+                <div className="card lg:w-[40%] text-center">
+                    <h1 className="text-2xl font-semibold mb-4">Register</h1>
+                    <form onSubmit={handleSubmit} className="inputfld">
+                        <div className="flex inputfld justify-between items-center">
+                            <input
+                                type="text"
+                                placeholder="First name"
+                                id="firstname"
+                                name="given-name"
+                                className="mr-2"
+                            />
+                            <input
+                                type="text"
+                                placeholder="Last name"
+                                id="lastname"
+                                name="last-name"
+                            />
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Create a username"
+                            name="username"
+                            id="username"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Email address"
+                            name="email"
+                            id="email"
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Create Password"
+                        />
+                        <button type="submit" className="custom-button">
+                            {" "}
+                            Register
+                        </button>
+                        <hr />
+                        <p className="py-2 font-medium">or</p>
+                    </form>
+                    <Link
+                        href="/auth/login"
+                        className="block text-center custom-button"
                     >
-                        {" "}
-                        Register
-                    </button>
-                    <hr />
-                    <p className="py-2 font-medium">or</p>
-                </form>
-                <Link
-                    href="/auth/login"
-                    className="block text-center w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-                >
-                    Login
-                </Link>
+                        Login
+                    </Link>
+                </div>
             </div>
-        </div>
+        )
     );
 }
