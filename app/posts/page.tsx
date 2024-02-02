@@ -5,7 +5,7 @@ import PostCard from "@/components/common/PostCard";
 import Loading from "./loading";
 
 export default function PostsPage() {
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState<any[]>([]);
 
     useEffect(() => {
         fetch("/api/getposts")
@@ -22,12 +22,13 @@ export default function PostsPage() {
                 <Suspense fallback={<Loading />}>
                     <p>
                         {posts.map((post) => (
+                            <li key={post.username} className="list-none p-0 m-0">
                             <PostCard
                                 title={post.title}
                                 author={post.author}
                                 content={post.content}
                                 time={post.createdAt}
-                            />
+                            /></li>
                         ))}
                     </p>
                 </Suspense>

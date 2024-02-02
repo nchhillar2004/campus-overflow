@@ -37,13 +37,13 @@ const authOptions: AuthOptions = {
             },
         }),
     ],
-    callbacks: {
-        async signIn({ user, account }: { user: AuthUser; account: Account }) {
-            if (account?.provider == "credentials") {
-                return true;
-            }
-        },
-    },
+    // callbacks: {
+    //     async signIn({ user, account }: { user: AuthUser; account: Account }) {
+    //         if (account?.provider == "credentials") {
+    //             return true;
+    //         }
+    //     },
+    // },
 };
 
 const handler = NextAuth(authOptions);
