@@ -91,7 +91,7 @@ export default function UserProfileCard(props: {
                                         <Link
                                             href="/services/verify"
                                             
-                                            className="p-2 bg-slate-100 text-center border rounded w-full"
+                                            className="p-2 text-center border rounded w-full"
                                         >
                                             Get Verified
                                         </Link>

@@ -5,6 +5,9 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useSession, signIn } from "next-auth/react";
+import Loading from "@/components/loading";
+import { Button } from "@/components/ui/button";
+import { TypographyH1 } from "@/components/typography";
 
 export default function Login() {
     const router = useRouter();
@@ -44,14 +47,14 @@ export default function Login() {
     };
 
     if (sessionStatus === "loading") {
-        return <h1>Loading...</h1>;
+        return <Loading />;
     }
 
     return (
         sessionStatus !== "authenticated" && (
             <div className="flex justify-center py-5">
-                <div className="card lg:w-[40%] text-center dark:bg-slate-900 dark:border-slate-600">
-                    <h1 className="text-2xl font-semibold mb-4">Login</h1>
+                <div className="card lg:w-[40%] text-center">
+                    <TypographyH1 title="Login" />
                     <form onSubmit={handleSubmit} className="inputfld">
                         <input
                             type="text"
@@ -65,20 +68,19 @@ export default function Login() {
                             id="password"
                             placeholder="Password"
                         />
-                        <button type="submit" className="custom-button">
-                            {" "}
+                        <Button type="submit" variant="blue">
                             Login
-                        </button>
+                        </Button>
                         <hr />
                         <p className="py-2 font-medium">or</p>
                     </form>
 
+                    <Button variant="blue" asChild>
                     <Link
                         href="/auth/register"
-                        className="block text-center custom-button"
                     >
                         Register
-                    </Link>
+                    </Link></Button>
                 </div>
             </div>
         )

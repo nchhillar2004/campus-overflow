@@ -9,7 +9,7 @@ export default function PostCard(props: {
     tag: String;
 }) {
     return (
-        <div className="card mb-4 dark:bg-slate-900 dark:border-slate-600">
+        <div className="card dark:bg-background mb-4">
             <div className="flex flex-col">
                 <h1 className="text-[18px] font-medium">{props.title}</h1>
                 <p className="flex text-sm text-slate-500">
@@ -19,7 +19,7 @@ export default function PostCard(props: {
                     </Link>
                 </p>
                 <p className="my-2 overflow-hidden text-ellipsis line-clamp-5">{props.content}</p>
-                <div className="flex tag dark:text-slate-100 dark:bg-slate-600">
+                <div className="flex tag">
                     <p>#{props.tag}</p>
                 </div>
                 <p className="text-xs text-slate-400">

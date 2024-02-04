@@ -4,14 +4,14 @@ import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
-import SubNavbar from "@/components/navbar/sub-navbar";
-import "animate.css";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "@/utils/SessionProvider";
 import { getServerSession } from "next-auth";
 import SiteConfig from "@/config/site";
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Suspense } from "react";
+import Loading from "@/components/loading";
 
 const font = Roboto({
     subsets: ["latin"],
@@ -77,7 +77,7 @@ export default async function RootLayout({
     children: React.ReactNode;
 }) {
     const session = await getServerSession();
-    
+
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={font.className}>
@@ -87,14 +87,13 @@ export default async function RootLayout({
                         defaultTheme="light"
                         enableSystem
                     >
-                        <header>
-                            <Navbar />
-                            <SubNavbar />
-                        </header>
+                        <Navbar />
                         <Toaster />
-                        <main className="h-fit min-h-[50%]">
+                        <main className="min-h-[50%] pt-[50px] h-fit">
                             <div className="bhfs w-full lg:w-[90%] h-full m-auto">
-                                {children}
+                                <Suspense fallback={<Loading />}>
+                                    {children}
+                                </Suspense>
                             </div>
                         </main>
                         <Footer />

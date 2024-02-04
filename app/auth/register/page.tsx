@@ -4,8 +4,11 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { time } from "@/utils/GetTime"
+import { time } from "@/utils/GetTime";
 import { image } from "@/utils/GetImage";
+import Loading from "@/components/loading";
+import { Button } from "@/components/ui/button";
+import { TypographyH1 } from "@/components/typography";
 
 export default function Register() {
     const router = useRouter();
@@ -78,14 +81,14 @@ export default function Register() {
     };
 
     if (sessionStatus === "loading") {
-        return <h1>Loading...</h1>;
+        return <Loading />;
     }
 
     return (
         sessionStatus !== "authenticated" && (
             <div className="flex justify-center py-5">
-                <div className="card lg:w-[40%] text-center dark:bg-slate-900 dark:border-slate-600">
-                    <h1 className="text-2xl font-semibold mb-4">Register</h1>
+                <div className="card lg:w-[40%] text-center">
+                    <TypographyH1 title="Register" />
                     <form onSubmit={handleSubmit} className="inputfld">
                         <div className="flex inputfld justify-between items-center">
                             <input
@@ -120,19 +123,15 @@ export default function Register() {
                             id="password"
                             placeholder="Create Password"
                         />
-                        <button type="submit" className="custom-button">
-                            {" "}
+                        <Button type="submit" variant="blue">
                             Register
-                        </button>
+                        </Button>
                         <hr />
                         <p className="py-2 font-medium">or</p>
                     </form>
-                    <Link
-                        href="/auth/login"
-                        className="block text-center custom-button"
-                    >
-                        Login
-                    </Link>
+                    <Button variant="blue" asChild>
+                        <Link href="/auth/login">Login</Link>
+                    </Button>
                 </div>
             </div>
         )

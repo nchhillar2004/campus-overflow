@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { time } from "@/utils/GetTime";
+import { Button } from "@/components/ui/button";
 
 const CreatePost = () => {
     const router = useRouter();
@@ -52,7 +53,7 @@ const CreatePost = () => {
         <>
             {session ? (
                 <div className="flex py-4">
-                    <div className="card dark:bg-slate-900 dark:border-slate-600 w-full">
+                    <div className="card w-full">
                         <form onSubmit={handlePost} className="inputfld">
                             <label htmlFor="title">Post title</label>
                             <input
@@ -76,9 +77,7 @@ const CreatePost = () => {
                                     name="tag"
                                     className="lg:mr-4"
                                 />
-                            <button type="submit" className="custom-button">
-                                Post
-                            </button>
+                            <Button type="submit" variant="blue">Post</Button>
                         </form>
                     </div>
                 </div>

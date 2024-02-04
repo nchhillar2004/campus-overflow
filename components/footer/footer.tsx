@@ -1,28 +1,23 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { Separator } from "@/components/ui/separator";
+import { SiteLogo } from "../typography";
 
 export default function Footer() {
     return (
-        <footer>
-            <div className="footer-container bg-[#12151b] text-[15px]">
-                <div className="bg-[#232a35] hover:bg-[#232a35]/80 h-[30px] text-white">
+        <footer className="bg-[var(--custom-grey)]">
+            <Separator/>
+            <div className="footer-container text-[15px]">
+                <div className="h-[30px]">
                     <Link href="#top" className="flex items-center h-full w-full justify-center">Back to top</Link>
                 </div>
                 <div className="footer_container py-3.5 w-11/12 m-auto">
                     <div className="footer-top flex h-fit w-full flex-col border-b pb-2">
-                        <Link href="/" className="image-link w-fit">
-                            <Image
-                                src="/icon.png"
-                                width={120}
-                                height={120}
-                                alt="BHFS Logo"
-                            ></Image>
-                        </Link>
+                        <SiteLogo />
 
                         <div className="flex flex-wrap w-full items-start justify-between">
-                            <nav className="w-fit p-2 text-white">
-                                <h3 className="font-semibold">BHFS</h3>
+                            <nav className="w-fit p-2">
+                                <h3>BHFS</h3>
                                 <ul className="nopad">
                                     <li>
                                         <Link href="/">Home</Link>
@@ -53,8 +48,8 @@ export default function Footer() {
                                 </ul>
                             </nav>
 
-                            <nav className="w-fit p-2 text-white">
-                                <h3 className="font-semibold">About</h3>
+                            <nav className="w-fit p-2">
+                                <h3>About</h3>
                                 <ul className="nopad">
                                     <li>
                                         <Link href="/about-us">About us</Link>
@@ -76,8 +71,8 @@ export default function Footer() {
                                 </ul>
                             </nav>
 
-                            <nav className="w-fit p-2 text-white">
-                                <h3 className="font-semibold">Partners</h3>
+                            <nav className="w-fit p-2">
+                                <h3>Partners</h3>
                                 <ul className="nopad">
                                     <li>
                                         <Link href="/">Instagram.com</Link>
@@ -94,8 +89,8 @@ export default function Footer() {
                                 </ul>
                             </nav>
 
-                            <nav className="w-fit p-2 text-white">
-                                <h3 className="font-semibold">Social</h3>
+                            <nav className="w-fit p-2">
+                                <h3>Social</h3>
                                 <ul className="nopad">
                                     <li>
                                         <Link href="/">Instagram</Link>
@@ -110,7 +105,7 @@ export default function Footer() {
                             </nav>
                         </div>
                     </div>
-                    <div className="footer-bottom py-5 text-white flex items-center justify-between">
+                    <div className="footer-bottom py-5 flex items-center justify-between">
                         <div className="fleft">
                             <p>2,19,487</p>
                             <div>

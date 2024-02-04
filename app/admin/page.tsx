@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import { TypographyH1 } from "@/components/typography";
 
 export default function Admin() {
-  return (
-    <div>Admin</div>
-  )
+    return (
+        <div>
+            <TypographyH1 title="Admin dashboard" />
+        </div>
+    );
 }
