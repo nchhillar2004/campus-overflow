@@ -66,12 +66,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.5,
         },
         {
-            url: `${URL}/plans`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.5,
-        },
-        {
             url: `${URL}/auth/login`,
             lastModified: new Date(),
             changeFrequency: "monthly",
