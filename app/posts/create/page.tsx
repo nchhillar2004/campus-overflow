@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
+import { time } from "@/utils/GetTime";
 
 const CreatePost = () => {
     const router = useRouter();
     const { data: session }: any = useSession();
-    
+
     useEffect(() => {
         if (!session) {
             router.replace("/auth/login");
@@ -18,13 +19,14 @@ const CreatePost = () => {
         e.preventDefault();
         const title = e.target[0].value;
         const content = e.target[1].value;
+        const tag = e.target[2].value || "bhfs";
 
         if (!title || !content) {
             toast.error("Fill all fields");
         }
         try {
-            const author :string = session.user?.email;
-            
+            const author: string = session.user?.username;
+
             const res = await fetch("/api/createpost", {
                 method: "POST",
                 headers: {
@@ -34,6 +36,8 @@ const CreatePost = () => {
                     title,
                     content,
                     author,
+                    tag,
+                    time,
                 }),
             });
             if (res.status === 200) {
@@ -47,36 +51,40 @@ const CreatePost = () => {
     return (
         <>
             {session ? (
-            <div className="flex">
-                <div className="card w-full">
-                    <form onSubmit={handlePost} className="inputfld">
-                        <label htmlFor="title">Post title</label>
-                        <input
-                            type="text"
-                            id="title"
-                            name="title"
-                            placeholder="Post title"
-                        />
-                        <label htmlFor="content">Post Content</label>
-                        <textarea
-                            className="min-h-[150px]"
-                            id="content"
-                            name="content"
-                            placeholder="Content..."
-                        />
-                        <label htmlFor="tags">Add tags</label>
-                        <div className="flex flex-col inputfld lg:flex-row justify-between">
-                            <input type="text" placeholder="#tag1" id="tags" name="tags" className="lg:mr-4"/>
-                            <input type="text" placeholder="#tag2" className="lg:mr-4"/>
-                            <input type="text" placeholder="#tag3"/>
-                        </div>
-                        <button type="submit" className="custom-button">
-                            Post
-                        </button>
-                    </form>
+                <div className="flex py-4">
+                    <div className="card dark:bg-slate-900 dark:border-slate-600 w-full">
+                        <form onSubmit={handlePost} className="inputfld">
+                            <label htmlFor="title">Post title</label>
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                placeholder="Post title"
+                            />
+                            <label htmlFor="content">Post Content</label>
+                            <textarea
+                                className="min-h-[150px]"
+                                id="content"
+                                name="content"
+                                placeholder="Content..."
+                            />
+                            <label htmlFor="tag1">Add custom tag</label>
+                                <input
+                                    type="text"
+                                    placeholder="#bhfs"
+                                    id="tag"
+                                    name="tag"
+                                    className="lg:mr-4"
+                                />
+                            <button type="submit" className="custom-button">
+                                Post
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            ): (<div className="main">Loggin to create a post</div>)}
+            ) : (
+                <div className="main">Loggin to create a post</div>
+            )}
         </>
     );
 };

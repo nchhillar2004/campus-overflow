@@ -1,39 +1,44 @@
-"use client";
 import Link from "next/link";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { Key, Suspense } from "react";
 import PostCard from "@/components/common/PostCard";
 import Loading from "./loading";
+import SiteConfig from "@/config/site";
 
-export default function PostsPage() {
-    const [posts, setPosts] = useState<any[]>([]);
+interface Post {
+    title: String;
+    _id: null | undefined | Key | React.Key;
+    content: String;
+    time: String;
+    author: String;
+    tag: String;
+}
 
-    useEffect(() => {
-        fetch("/api/getposts")
-            .then((res) => res.json())
-            .then((data) => {
-                setPosts(data);
-            });
-    }, []);
+export default async function PostsPage() {
+    const res = await fetch(`${SiteConfig.url}/api/getposts`, {
+        cache: "no-store",
+    });
+    const posts: Post[] = await res.json();
 
     return (
-        <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
+        <div className="flex flex-col-reverse justify-between lg:flex-row h-full py-4">
             <div className="left lg:w-5/6 rounded-md p-4 bg-slate-50 dark:bg-slate-800 h-full">
-                <h1 className="font-bold text-2xl mb-2">Posts</h1>
+                <h1 className="font-bold text-2xl mb-2">Latest posts</h1>
                 <Suspense fallback={<Loading />}>
-                    <p>
-                        {posts.map((post) => (
-                            <li key={post.username} className="list-none p-0 m-0">
+                    <div className="flex flex-col-reverse">
+                    {posts.map((post) => (
+                        <li key={post._id} className="list-none p-0 m-0">
                             <PostCard
                                 title={post.title}
                                 author={post.author}
                                 content={post.content}
-                                time={post.createdAt}
-                            /></li>
-                        ))}
-                    </p>
+                                time={post.time}
+                                tag={post.tag}
+                            />
+                        </li>
+                    ))}</div>
                 </Suspense>
             </div>
-            <div className="right mb-4 h-fit">
+            <div className="right h-full py-[10px]">
                 <Link
                     href="/posts/create"
                     className="custom-button text-center"

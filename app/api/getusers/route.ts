@@ -1,14 +1,14 @@
-import Posts from "@/models/PostSchema";
+import Users from "@/models/UserSchema";
 import connect from "@/db/conn";
 import { NextResponse } from "next/server";
 
-export const GET = async () => {
+export const GET = async (request: any) => {
     try {
         await connect();
 
-        const posts = await Posts.find();
+        const users = await Users.find();
 
-        return new NextResponse(JSON.stringify(posts), {
+        return new NextResponse(JSON.stringify(users), {
             status: 200,
             headers: { "Content-Type": "application/json" },
         });

@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
+import SiteConfig from "@/config/site";
 
-const URL = process.env.WEBSITE_URL;
+const URL = SiteConfig.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return [

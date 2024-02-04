@@ -37,7 +37,7 @@ export default function Login() {
                     toast.error("Invalid username or password.");
                     if (res?.url) router.replace("/");
                 } else {
-                    console.log("");
+                    console.log(res?.error);
                 }
             } catch (error) {}
         }
@@ -49,8 +49,8 @@ export default function Login() {
 
     return (
         sessionStatus !== "authenticated" && (
-            <div className="flex justify-center">
-                <div className="card lg:w-[40%] text-center">
+            <div className="flex justify-center py-5">
+                <div className="card lg:w-[40%] text-center dark:bg-slate-900 dark:border-slate-600">
                     <h1 className="text-2xl font-semibold mb-4">Login</h1>
                     <form onSubmit={handleSubmit} className="inputfld">
                         <input

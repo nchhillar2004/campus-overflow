@@ -1,21 +1,45 @@
 import mongoose from "mongoose";
 
-export const postSchema = new mongoose.Schema({
-    title: {
+export const productSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true,
     },
-    content: {
+    mrp: {
+        type: Number,
+        required: true,
+    },
+    discount: {
+        type: Number,
+    },
+    cost: {
+        type: Number,
+    },
+    image:{
+        type: String, 
+    },
+    features: {
+        type: Object,
+    },
+    quantity:{
+        type: Number,
+        default: 1,
+    },
+    isAvailable: {
+        type: Boolean,
+        default: true,
+    },
+    about: {
         type: String,
         required: true,
     },
-    author: {
+    seller: {
         type: String,
         required: true,
     },
     tag: {
         type: String,
-        default: 'bhfs',
+        default: "bhfs",
     },
     time: {
         type: String,
@@ -24,7 +48,6 @@ export const postSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Users",
-            default: "0",
         },
     ],
     comments: [
@@ -46,5 +69,5 @@ export const postSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.models.Posts || mongoose.model("Posts", postSchema);
+export default mongoose.models.Products || mongoose.model("Products", productSchema);
 

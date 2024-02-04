@@ -4,6 +4,8 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { time } from "@/utils/GetTime"
+import { image } from "@/utils/GetImage";
 
 export default function Register() {
     const router = useRouter();
@@ -32,7 +34,6 @@ export default function Register() {
         const username = e.target[2].value;
         const email = e.target[3].value;
         const password = e.target[4].value;
-
         const validUsername = isUsernameValid(username);
         const validEmail = isEmailValid(email);
 
@@ -48,17 +49,18 @@ export default function Register() {
             toast.error("Password must me 8 characters long");
         } else {
             try {
-                const full_name = fname + " " + lname;
-
+                const name = fname + " " + lname;
                 const res = await fetch("/api/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        full_name,
+                        name,
                         username,
                         email,
+                        time,
+                        image,
                         password,
                     }),
                 });
@@ -81,8 +83,8 @@ export default function Register() {
 
     return (
         sessionStatus !== "authenticated" && (
-            <div className="flex justify-center">
-                <div className="card lg:w-[40%] text-center">
+            <div className="flex justify-center py-5">
+                <div className="card lg:w-[40%] text-center dark:bg-slate-900 dark:border-slate-600">
                     <h1 className="text-2xl font-semibold mb-4">Register</h1>
                     <form onSubmit={handleSubmit} className="inputfld">
                         <div className="flex inputfld justify-between items-center">

@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
-import { postSchema } from "./PostSchema"
+import { postSchema } from "./PostSchema";
+import { productSchema } from "./ProductSchema";
 
 export const userSchema = new mongoose.Schema(
     {
-        full_name: {
+        name: {
             type: String,
             required: true,
         },
@@ -20,11 +21,43 @@ export const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        role: {
+            type: String,
+            default: "member",
+        },
+        image: {
+            type: String,
+            default: "https://placehold.co/200x200",
+        },
+        banner: {
+            type: String,
+            default: "https://placehold.co/1400x500?text=BHFS&font=roboto",
+        },
+        time: {
+            type: String,
+        },
+        plan: {
+            type: String,
+            default: "free",
+        },
+        balance: {
+            type: String,
+            default: "0.00",
+        },
+        stars: {
+            type: String,
+            default: "0",
+        },
+        isVerified: {
+            type: Boolean,
+            default: "false",
+        },
+        cart: [productSchema],
         posts: [postSchema],
         likedPosts: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Post",
+                ref: "Posts",
             },
         ],
         questions: [
@@ -32,14 +65,14 @@ export const userSchema = new mongoose.Schema(
                 text: String,
                 author: {
                     type: mongoose.Schema.Types.ObjectId,
-                    ref: "User",
+                    ref: "Users",
                 },
                 answers: [
                     {
                         text: String,
                         author: {
                             type: mongoose.Schema.Types.ObjectId,
-                            ref: "User",
+                            ref: "Users",
                         },
                         createdAt: {
                             type: Date,
