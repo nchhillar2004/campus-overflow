@@ -10,6 +10,8 @@ import { Toaster } from "react-hot-toast";
 import AuthProvider from "@/utils/SessionProvider";
 import { getServerSession } from "next-auth";
 import SiteConfig from "@/config/site";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const font = Roboto({
     subsets: ["latin"],
@@ -97,6 +99,8 @@ export default async function RootLayout({
                         </main>
                         <Footer />
                     </ThemeProvider>
+                    <SpeedInsights />
+                    <Analytics />
                 </AuthProvider>
             </body>
         </html>
