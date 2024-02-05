@@ -25,6 +25,7 @@ export default function Navbar() {
         status: sessionStatus,
         update: sessionUpdate,
     }: any = useSession();
+    console.log(session);
     
 
     const toggleMobileSearch = () => {
