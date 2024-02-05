@@ -29,7 +29,7 @@ export default function Footer() {
                                         <Link href="/products">Products</Link>
                                     </li>
                                     <li>
-                                        <Link href="/explore">Explore</Link>
+                                        <Link href="/">Explore</Link>
                                     </li>
                                     <li>
                                         <Link href="/posts">Posts</Link>
@@ -38,7 +38,7 @@ export default function Footer() {
                                         <Link href="/">Mail</Link>
                                     </li>
                                     <li>
-                                        <Link href="/contact-us/contact-form">
+                                        <Link href="/contact">
                                             Contact form
                                         </Link>
                                     </li>
@@ -52,7 +52,7 @@ export default function Footer() {
                                 <h3>About</h3>
                                 <ul className="nopad">
                                     <li>
-                                        <Link href="/about-us">About us</Link>
+                                        <Link href="/about">About us</Link>
                                     </li>
                                     <li>
                                         <Link href="/">How it works</Link>
@@ -64,7 +64,7 @@ export default function Footer() {
                                         <Link href="/">Developer</Link>
                                     </li>
                                     <li>
-                                        <Link href="/contact-us">
+                                        <Link href="/contact">
                                             Contact us
                                         </Link>
                                     </li>
