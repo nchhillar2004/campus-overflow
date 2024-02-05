@@ -11,7 +11,7 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { MobileMenu } from "./mobile-menu";
 import { useSession } from "next-auth/react";
-import Loading from "../loading";
+import { Loading, SmallLoading } from "../loading";
 import Image from "next/image";
 import SearchBar from "../common/search-bar";
 import { Suspense } from "react";
@@ -31,9 +31,6 @@ export default function Navbar() {
         setShowMobileSearch(!showMobileSearch);
     };
 
-    if (sessionStatus === "loading") {
-        return <Loading />;
-    }
     return (
         <header className="fixed top-0 w-full z-10">
             <div className="w-full h-[50px] bg-background" id="top">
@@ -73,7 +70,7 @@ export default function Navbar() {
                     <div className="h-full">
                         {session ? (
                             <div className="flex items-center h-full">
-                                <Suspense fallback={<Loading />}>
+                                <Suspense fallback={<SmallLoading />}>
                                     <Button
                                         variant="bhfs"
                                         size="myIcon"
@@ -81,7 +78,7 @@ export default function Navbar() {
                                     >
                                         <Link href="/u/profile">
                                             <Image
-                                                src={session?.user?._doc.image}
+                                                src={session.user?._doc?.image || '/og.jpg'}
                                                 width={20}
                                                 height={20}
                                                 alt={session?.user?._doc.name}

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { time } from "@/utils/GetTime";
 import { image } from "@/utils/GetImage";
-import Loading from "@/components/loading";
+import { Loading } from "@/components/loading";
 import { Button } from "@/components/ui/button";
 import { TypographyH1 } from "@/components/typography";
 

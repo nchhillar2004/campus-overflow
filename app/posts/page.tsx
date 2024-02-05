@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import React, { Key, Suspense } from "react";
 import PostCard from "@/components/common/PostCard";
-import Loading from "@/components/loading";
+import { Loading } from "@/components/loading";
 import SiteConfig from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { TypographyH1 } from "@/components/typography";

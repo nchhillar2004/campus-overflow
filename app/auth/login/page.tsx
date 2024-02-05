@@ -5,7 +5,7 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useSession, signIn } from "next-auth/react";
-import Loading from "@/components/loading";
+import { Loading } from "@/components/loading";
 import { Button } from "@/components/ui/button";
 import { TypographyH1 } from "@/components/typography";
 
