@@ -13,10 +13,12 @@ body,
 @layer base {
     :root {
         --button-bg: #1772eb;
-        --custom-grey: #F1F2F3;
+        --custom-grey: #E3E6E8;
         --blue-bg: #EDF5FD;
         --link-fg: #1B75D0;
+        --black-225: #d6d9dc;
         --blue-fg: #155CA2;
+        --grey-fg: #0C0D0E;
         --background: 0 0% 100%;
         --foreground: 0 0% 3.9%;
         --card: 0 0% 100%;
@@ -44,6 +46,8 @@ body,
         --blue-bg: #1C3854;
         --blue-fg: #B2D6FB;
         --link-fg: #B2D6FB;
+        --grey-fg: #C8CCD0;
+        --black-225: #d6d9dc;
         --background: 210 3% 15%;
         --foreground: 0 0% 98%;
         --card: 0 0% 3.9%;
@@ -119,22 +123,16 @@ textarea:focus {
     .desktop-menu {
         display: none;
     }
-    .sidebar {
-        display: block;
-    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .desktop-menu {
         display: none;
     }
-    .sidebar {
-        display: block;
-    }
 }
 
 @media (min-width: 1025px) {
-    .mobile-menu-toggle {
+    .mobile-menu {
         display: none;
     }
 }

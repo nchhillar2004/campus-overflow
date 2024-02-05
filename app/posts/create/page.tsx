@@ -26,7 +26,7 @@ const CreatePost = () => {
             toast.error("Fill all fields");
         }
         try {
-            const author: string = session.user?.username;
+            const author: string = session.user?._doc.username;
 
             const res = await fetch("/api/createpost", {
                 method: "POST",

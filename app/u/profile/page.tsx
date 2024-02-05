@@ -5,8 +5,7 @@ import { useSession } from "next-auth/react";
 
 export default function LoggedInUserProfile() {
     const { data: session }: any = useSession();
-    const data = session?.user || null;
-    console.log(data);
+    const data = session?.user._doc || null;
     
     return session ? (
         <div className="flex">

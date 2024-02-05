@@ -22,7 +22,7 @@ export default function NavButton(props: {
             href={props.href}
             className="text-foreground bg-transparent h-full px-4 flex items-center ml-1 hover:bg-[var(--custom-grey)]"
         >
-            <Button variant="icon" size="myicon">
+            <Button variant="icon" size="myIcon">
                 {props.icon}
             </Button>
             {props.name}

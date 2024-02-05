@@ -12,7 +12,7 @@ import {
     Newspaper,
     InfoIcon,
     MessageCircleQuestion,
-    PackageOpen
+    PackageOpen,
 } from "lucide-react";
 import {
     DropdownMenuContent,
@@ -26,10 +26,12 @@ import {
     DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export function MobileMenu() {
     const router = useRouter();
-
+    const { data: session, update: sessionUpdate }: any = useSession();
+    
     return (
         <DropdownMenuContent className="w-56">
             <DropdownMenuLabel>Menu</DropdownMenuLabel>
@@ -131,9 +133,22 @@ export function MobileMenu() {
                 <LifeBuoy className="mr-2 h-4 w-4" />
                 <span>Support</span>
             </DropdownMenuItem>
-            <DropdownMenuItem disabled>
+            {}
+            {session?.user?._doc.isAdmin ? (
+                <DropdownMenuItem>
+                    <Cloud className="mr-2 h-4 w-4" />
+                    <span>Admin</span>
+                </DropdownMenuItem>
+            ) : (
+                <DropdownMenuItem disabled>
+                    <Cloud className="mr-2 h-4 w-4" />
+                    <span>Admin</span>
+                </DropdownMenuItem>
+            )}
+
+            <DropdownMenuItem>
                 <Cloud className="mr-2 h-4 w-4" />
-                <span>API</span>
+                <span>Settings</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>

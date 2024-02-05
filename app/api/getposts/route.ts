@@ -2,6 +2,8 @@ import Posts from "@/models/PostSchema";
 import connect from "@/db/conn";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async () => {
     try {
         await connect();

@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import React, { Key, Suspense } from "react";
 import PostCard from "@/components/common/PostCard";
@@ -15,11 +17,24 @@ interface Post {
     tag: String;
 }
 
-export default async function PostsPage() {
-    const res = await fetch(`${SiteConfig.url}/api/getposts`, {
-        cache: "no-store",
+export default function PostsPage() {
+    const [posts, setPosts] = useState<any[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch(`${SiteConfig.url}/api/getposts`);
+                if (!res.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+                const data: Post[] = await res.json();
+                setPosts(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
     });
-    const posts: Post[] = await res.json();
 
     return (
         <div className="container">

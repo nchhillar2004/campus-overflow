@@ -1,7 +1,7 @@
 import Users from "@/models/UserSchema";
 import connect from "@/db/conn";
 import { NextResponse } from "next/server";
-
+export const dynamic = "force-dynamic";
 export const POST = async (request: any) => {
     try {
         await connect();

@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import Users from "@/models/UserSchema";
 import connect from "@/db/conn";
 import bcrypt from "bcryptjs";
-
+export const dynamic = "force-dynamic";
 const authOptions = {
     pages: {
         signIn: "/auth/login",
@@ -41,36 +41,14 @@ const authOptions = {
         }),
     ],
     callbacks: {
-        async jwt({ token, user }) {
-            if (user) {
-                token.id = user._id;
-                token.name = user.name;
-                token.username = user.username;
-                token.email = user.email;
-                token.image = user.image;
-                token.isVerified = user.isVerified;
-                token.stars = user.stars;
-                token.banner = user.banner;
-                token.posts = user.posts;
-                token.plan = user.plan;
-                token.questions = user.questions;
+        async jwt({ token, user, trigger, session }) {
+            if (trigger === "update") {
+                return { ...token, ...session.user }
             }
-            return token;
+            return {...token, ...user};
         },
         async session({ session, token }) {
-            if (token) {
-                session.user.id = token._id;
-                session.user.name = token.name;
-                session.user.username = token.username;
-                session.user.email = token.email;
-                session.user.image = token.image;
-                session.user.isVerified = token.isVerified;
-                session.user.stars = token.stars;
-                session.user.plan = token.plan;
-                session.user.posts = token.posts;
-                session.user.banner = token.banner;
-                session.user.questions = token.questions;
-            }
+            session.user = token;
             return session;
         },
     },

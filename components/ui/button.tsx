@@ -9,6 +9,7 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
+                bhfs: "bg-background hover:bg-[var(--custom-grey)] text-[var(--grey-fg)]",
                 default:
                     "bg-primary text-primary-foreground",
                 destructive:
@@ -28,7 +29,9 @@ const buttonVariants = cva(
                 sm: "h-9 rounded-md px-3",
                 lg: "h-11 rounded-md px-8",
                 icon: "h-10 w-10",
-                myicon: "h-10 w-fit mr-2"
+                myIcon: "h-full w-fit px-2 rounded-[0px]",
+                mySize: "h-full w-fit px-2 rounded-[0px]",
+                round: "h-fit w-fit py-2 px-3 rounded-[16px]",
             },
         },
         defaultVariants: {
