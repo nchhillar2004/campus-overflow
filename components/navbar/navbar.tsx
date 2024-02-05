@@ -81,7 +81,7 @@ export default function Navbar() {
                                                 src={session.user?._doc?.image || '/og.jpg'}
                                                 width={20}
                                                 height={20}
-                                                alt={session?.user?._doc.name}
+                                                alt={session.user?._doc?.name || '...'}
                                             />
                                         </Link>
                                     </Button>
