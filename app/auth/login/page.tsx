@@ -52,35 +52,34 @@ export default function Login() {
 
     return (
         sessionStatus !== "authenticated" && (
-            <div className="flex justify-center py-5">
-                <div className="card lg:w-[40%] text-center">
-                    <TypographyH1 title="Login" />
-                    <form onSubmit={handleSubmit} className="inputfld">
-                        <input
-                            type="text"
-                            placeholder="Username"
-                            name="username"
-                            id="username"
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            placeholder="Password"
-                        />
-                        <Button type="submit" variant="blue">
-                            Login
-                        </Button>
-                        <hr />
-                        <p className="py-2 font-medium">or</p>
-                    </form>
+            <div className="container">
+                <div className="flex justify-center">
+                    <div className="card lg:w-[40%] text-center">
+                        <TypographyH1 title="Login" />
+                        <form onSubmit={handleSubmit} className="inputfld">
+                            <input
+                                type="text"
+                                placeholder="Username"
+                                name="username"
+                                id="username"
+                            />
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Password"
+                            />
+                            <Button type="submit" variant="blue">
+                                Login
+                            </Button>
+                            <hr />
+                            <p className="py-2 font-medium">or</p>
+                        </form>
 
-                    <Button variant="blue" asChild>
-                    <Link
-                        href="/auth/register"
-                    >
-                        Register
-                    </Link></Button>
+                        <Button variant="blue" asChild>
+                            <Link href="/auth/register">Register</Link>
+                        </Button>
+                    </div>
                 </div>
             </div>
         )

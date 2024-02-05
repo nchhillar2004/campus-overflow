@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import SiteConfig from "@/config/site";
-import { TypographyH1 } from "@/components/typography";
+import { TypographyH1, TypographyH2, TypographyP, TypographyList } from '@/components/typography';
 
 interface User {
     name: String;
@@ -27,8 +27,8 @@ const Users = async () => {
     const data: User[] = await response.json();
 
     return (
-        <div className="py-4">
-            <section className="p-4 rounded-sm">
+        <div>
+            <section className="container rounded-sm">
                 <TypographyH1 title="Users" />
                 {data.map((user) => (
                     <Link key={user._id} href={`/u/${user.username}`}>

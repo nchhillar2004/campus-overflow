@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
+            url: `${URL}/questions`,
+            lastModified: new Date(),
+            changeFrequency: "always",
+            priority: 1,
+        },
+        {
             url: `${URL}/u`,
             lastModified: new Date(),
             changeFrequency: "always",
@@ -79,6 +85,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: `${URL}/u/profile`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.5,
+        },
+        {
+            url: `${URL}/u/profile/settings`,
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 0.5,

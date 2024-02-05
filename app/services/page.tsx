@@ -1,9 +1,12 @@
 import React from "react";
+import { TypographyH1, TypographyH2, TypographyP, TypographyList } from '@/components/typography';
 
 export default function Services() {
     return (
-        <div className="flex items-center justify-center">
-             
+        <div>
+            <div className="container">
+                <TypographyH1 title="Services" />
+            </div>
         </div>
     );
 }

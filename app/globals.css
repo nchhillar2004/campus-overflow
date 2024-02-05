@@ -12,6 +12,7 @@ body,
 
 @layer base {
     :root {
+        --button-bg: #1772eb;
         --custom-grey: #F1F2F3;
         --blue-bg: #EDF5FD;
         --link-fg: #1B75D0;
@@ -76,6 +77,11 @@ body,
 
 a{
     color: var(--link-fg);
+}
+
+.container{
+    margin: auto;
+    width: 94%;
 }
 
 .active {

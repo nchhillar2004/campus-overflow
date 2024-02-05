@@ -86,7 +86,8 @@ export default function Register() {
 
     return (
         sessionStatus !== "authenticated" && (
-            <div className="flex justify-center py-5">
+            <div className="container">
+            <div className="flex justify-center">
                 <div className="card lg:w-[40%] text-center">
                     <TypographyH1 title="Register" />
                     <form onSubmit={handleSubmit} className="inputfld">
@@ -133,7 +134,7 @@ export default function Register() {
                         <Link href="/auth/login">Login</Link>
                     </Button>
                 </div>
-            </div>
+            </div></div>
         )
     );
 }

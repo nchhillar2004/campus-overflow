@@ -11,7 +11,7 @@ export default function Footer() {
                 <div className="h-[30px]">
                     <Link href="#top" className="flex items-center h-full w-full justify-center">Back to top</Link>
                 </div>
-                <div className="footer_container py-3.5 w-11/12 m-auto">
+                <div className="container">
                     <div className="footer-top flex h-fit w-full flex-col border-b pb-2">
                         <SiteLogo />
 

@@ -4,7 +4,9 @@ import { TypographyH1 } from "@/components/typography";
 export default function AboutUs() {
     return (
         <div>
-            <TypographyH1 title="Admin dashboard" />
+            <div className="container">
+                <TypographyH1 title="About us" />
+            </div>
         </div>
     );
 }
