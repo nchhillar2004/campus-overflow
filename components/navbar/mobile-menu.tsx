@@ -134,7 +134,7 @@ export function MobileMenu() {
                 <span>Support</span>
             </DropdownMenuItem>
             {}
-            {session?.user?._doc.isAdmin ? (
+            {session?.user?.isAdmin ? (
                 <DropdownMenuItem>
                     <Cloud className="mr-2 h-4 w-4" />
                     <span>Admin</span>

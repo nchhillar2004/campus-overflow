@@ -79,10 +79,10 @@ export default function Navbar() {
                                     >
                                         <Link href="/u/profile">
                                             <Image
-                                                src={session.user?._doc?.image || '/og.jpg'}
+                                                src={session.user?.image || '/og.jpg'}
                                                 width={20}
                                                 height={20}
-                                                alt={session.user?._doc?.name || '...'}
+                                                alt={session.user?.name || '...'}
                                             />
                                         </Link>
                                     </Button>
