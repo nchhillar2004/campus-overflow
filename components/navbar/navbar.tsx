@@ -37,7 +37,7 @@ export default function Navbar() {
             <div className="w-full h-[50px] bg-background" id="top">
                 <div className="container flex items-center h-full">
                     <div className="flex items-center h-full">
-                        <div className="mobile-menu-toggle px-2 cursor-pointer z-10 hover:bg-[var(--custom-grey)] flex items-center h-full">
+                        <div className="mobile-menu-toggle px-1 lg:px2 cursor-pointer z-10 hover:bg-[var(--custom-grey)] flex items-center h-full">
                             <DropdownMenu>
                                 <DropdownMenuTrigger className="h-full" asChild>
                                     <Menu />
@@ -79,10 +79,10 @@ export default function Navbar() {
                                     >
                                         <Link href="/u/profile">
                                             <Image
-                                                src={session.user?.image || '/og.jpg'}
+                                                src={session.user?.picture || session.user?._doc?.image || session.user?.image}
                                                 width={20}
                                                 height={20}
-                                                alt={session.user?.name || '...'}
+                                                alt={session.user?.name}
                                             />
                                         </Link>
                                     </Button>
@@ -91,6 +91,7 @@ export default function Navbar() {
                                         variant="bhfs"
                                         size="myIcon"
                                         asChild
+                                        className="desktop-menu"
                                     >
                                         <Link href="/help">
                                             <HelpCircle />

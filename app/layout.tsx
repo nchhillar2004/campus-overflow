@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Roboto } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar/navbar";
@@ -12,11 +11,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Suspense } from "react";
 import { Loading } from "@/components/loading";
-
-const font = Roboto({
-    subsets: ["latin"],
-    weight: ["400", "500"],
-});
 
 export const metadata: Metadata = {
     title: {
@@ -80,7 +74,7 @@ export default async function RootLayout({
 
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={font.className}>
+            <body>
                 <AuthProvider session={session}>
                     <ThemeProvider
                         attribute="class"

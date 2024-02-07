@@ -11,13 +11,13 @@ export default function LoggedInUserProfile() {
         <div className="flex">
             <UserProfileCard
                 fname={data.name}
-                image={data.image}
-                time={data.createdAt}
-                username={data.username}
+                image={data.image || data._doc?.image}
+                time={data.time || data._doc?.time}
+                username={data.username || data._doc?.username}
                 email={data.email}
-                role={data.role}
-                banner={data.banner}
-                verified={data.isVerified}
+                role={data.role || data._doc?.role}
+                banner={data.banner || data._doc?.banner}
+                verified={data.isVerified || data._doc?.isVerified}
                 isOwner={true}
             />
         </div>

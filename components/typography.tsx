@@ -56,7 +56,7 @@ function TypographyCode(props: { code: string | number }) {
 
 function SiteLogo() {
     return(
-        <Link href='/' className="h-full w-fit text-[20px] px-5 items-center hover:bg-[var(--custom-grey)] text-foreground flex">
+        <Link href='/' className="h-full w-fit text-[18px] lg:text-[20px] px-3 lg:px-5 items-center hover:bg-[var(--custom-grey)] text-foreground flex">
             <TrendingUp className="mr-1 text-[#e7700d]"/>
             BH<p className="font-semibold ml-[2px]">Finance</p>
         </Link>
