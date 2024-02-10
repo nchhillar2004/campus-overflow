@@ -69,7 +69,7 @@ const CreatePost = () => {
                                 name="content"
                                 placeholder="Content..."
                             />
-                            <label htmlFor="tag1">Add custom tag</label>
+                            <label htmlFor="tag">Add custom tag</label>
                                 <input
                                     type="text"
                                     placeholder="#bhfs"
