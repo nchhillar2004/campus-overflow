@@ -23,16 +23,17 @@ const FormSchema = z.object({
             message: "Username cannot be empty.",
         })
         .min(3, {
-            message: "Username must be at least 3 characters.",
+            message: "Invalid username.",
         })
         .max(16, {
-            message: "Username must be at most 16 characters.",
+            message: "Invalid username.",
+        })
+        .refine((data) => /^[a-z](?:[-a-z0-9]*[a-z0-9])?$/i.test(data), {
+            message:
+                "Invalid username.",
         }),
     password: z
         .string()
-        .min(1, {
-            message: "Password cannot be empty.",
-        })
         .min(8, {
             message: "Wrong password",
         })

@@ -10,6 +10,7 @@ import {
     FormField,
     FormItem,
     FormLabel,
+    FormDescription,
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -20,9 +21,20 @@ import Link from "next/link";
 
 const FormSchema = z
     .object({
-        name: z.string().min(1, {
-            message: "Name cannot be empty.",
-        }),
+        name: z
+            .string()
+            .min(1, {
+                message: "Name cannot be empty.",
+            })
+            .min(2, {
+                message: "Name cannot be less than 2 characters.",
+            })
+            .refine((value) => /^[a-zA-Z]+[-'s]?[a-zA-Z ]+$/.test(value), {
+                message: "Name should contain only alphabets",
+            })
+            .refine((value) => /^[a-zA-Z]+\s+[a-zA-Z]+$/.test(value), {
+                message: "Please enter both firstname and lastname",
+            }),
         username: z
             .string()
             .min(1, {
@@ -34,21 +46,25 @@ const FormSchema = z
             .max(16, {
                 message: "Username must be at most 16 characters.",
             })
-            .toLowerCase()
-            .trim(),
+            .refine((data) => /^[a-z](?:[-a-z0-9]*[a-z0-9])?$/i.test(data), {
+                message:
+                    "Invalid username. Only lowercase letters, numbers, and hyphens(-) are allowed in between.",
+            }),
         email: z.string().email({
             message: "Invalid email address.",
         }),
         password: z
             .string()
-            .min(1, {
-                message: "Password cannot be empty.",
-            })
             .min(8, {
-                message: "Wrong password",
+                message: "Password must be 8 characters long.",
             })
             .refine((data) => data.trim() !== "", {
                 message: "Password cannot be empty.",
+            })
+            .refine((data) => /^(?=.*[0-9])[a-zA-Z0-9]{8,}$/.test(data), {
+                message: "Password should contain atleast one Number (0-9)",
+            }).refine((data) => /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/.test(data), {
+                message: "Password should contain atleast one Alphabet (a-z)",
             }),
         cpassword: z.string(),
     })
@@ -111,7 +127,7 @@ export function RegisterForm() {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="w-full space-y-4"
+                className="w-full space-y-2 py-2"
             >
                 <FormField
                     control={form.control}
@@ -143,6 +159,7 @@ export function RegisterForm() {
                                     {...field}
                                 />
                             </FormControl>
+                            <FormDescription>Ex: test, test123 & test-user</FormDescription>
                             <FormMessage>
                                 {fieldState?.error?.message}
                             </FormMessage>
@@ -177,10 +194,11 @@ export function RegisterForm() {
                             <FormControl>
                                 <Input
                                     type="password"
-                                    placeholder="Create password"
+                                    placeholder="Create password atleast 8 characters"
                                     {...field}
                                 />
                             </FormControl>
+                            <FormDescription>Password should contain both number & alphabets.</FormDescription>
                             <FormMessage>
                                 {fieldState?.error?.message}
                             </FormMessage>

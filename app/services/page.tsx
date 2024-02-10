@@ -1,5 +1,5 @@
 import React from "react";
-import { TypographyH1, TypographyH2, TypographyP, TypographyList } from '@/components/typography';
+import { TypographyH1 } from '@/components/typography';
 
 export default function Services() {
     return (
