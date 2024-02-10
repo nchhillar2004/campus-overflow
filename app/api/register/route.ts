@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 
 export const dynamic = "force-dynamic";
 
-export const POST = async (request: Request, res: Response) => {
+export const POST = async (request: Request) => {
     const { name, username, email, password, time, image } =
         await request.json();
         
@@ -15,9 +15,17 @@ export const POST = async (request: Request, res: Response) => {
         where: { username: username },
         select: { username: true }
     })
+    const existingEmail = await prisma.users.findUnique({
+        where: { email: email },
+        select: { email: true }
+    })
 
     if (existingUser) {
-        return new NextResponse("Username already in us", { status: 400 });
+        return new NextResponse("Username already registered", { status: 409 });
+    }
+
+    if (existingEmail) {
+        return new NextResponse("Email already registered", { status: 400 });
     }
 
     const hashedPassword = await bcrypt.hash(password, 8);

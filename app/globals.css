@@ -13,11 +13,20 @@ body,
 
 @layer base {
     :root {
-        --button-bg: #1772eb;
+        --bs-sm: 0 1px 2px hsla(0, 0%, 0%, 0.05),
+            0 1px 4px hsla(0, 0%, 0%, 0.05), 0 2px 8px hsla(0, 0%, 0%, 0.05);
+        --bs-md: 0 1px 3px hsla(0, 0%, 0%, 0.06),
+            0 2px 6px hsla(0, 0%, 0%, 0.06), 0 3px 8px hsla(0, 0%, 0%, 0.09);
+        --bs-lg: 0 1px 4px hsla(0, 0%, 0%, 0.09),
+            0 3px 8px hsla(0, 0%, 0%, 0.09), 0 4px 13px hsla(0, 0%, 0%, 0.13);
+        --bs-xl: 0 10px 24px hsla(0, 0%, 0%, 0.05),
+            0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
+        --button-bg: #1b75d0;
         --custom-grey: #e3e6e8;
-        --custom-grey-fg: #636B74;
+        --custom-grey-fg: #636b74;
         --blue-bg: #edf5fd;
         --link-fg: #1b75d0;
+        --footer-fg: #C8CCD0;
         --black-225: #d6d9dc;
         --blue-fg: #155ca2;
         --grey-fg: #0c0d0e;
@@ -198,14 +207,22 @@ textarea:focus {
     }
 }
 
-
 .sidebar_option:hover,
-.sidebar_option:hover>p,
-.sidebar_option:hover>h3,
+.sidebar_option:hover > p,
+.sidebar_option:hover > h3,
 .sidebar_option--active,
-.sidebar_option--active>h3,
-.sidebar_option--active>p{
+.sidebar_option--active > h3,
+.sidebar_option--active > p {
     background-color: #fcecec;
     color: #c04b37 !important;
     font-weight: 500 !important;
+}
+
+.auth-card {
+    background-color: var(--custom-grey);
+    margin: auto;
+    border-radius: 6px;
+    text-align: start;
+    box-shadow: var(--bs-xl) !important;
+    padding: 32px;
 }

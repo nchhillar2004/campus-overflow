@@ -54,11 +54,11 @@ export default function Navbar() {
                         </Button>
                     </div>
 
-                    <div className="desktop-menu flex flex-1 w-full">
+                    <div className="flex max-md:hidden flex-1 w-full">
                         <SearchBar />
                     </div>
 
-                    <div className="mobile-menu flex flex-1 w-full h-full items-center justify-center">
+                    <div className="flex md:hidden flex-1 w-full h-full items-center justify-center">
                         <Button
                             variant="bhfs"
                             size="myIcon"

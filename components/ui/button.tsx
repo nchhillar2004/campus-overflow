@@ -15,18 +15,19 @@ const buttonVariants = cva(
                 destructive:
                     "bg-destructive text-destructive-foreground hover:bg-destructive/90",
                 outline:
-                    "border border-[var(--button-bg)] bg-background hover:bg-[var(--blue-bg)]",
+                    "border border-[var(--link-fg)] bg-background hover:bg-[var(--blue-bg)]",
                 secondary:
                     "bg-secondary text-secondary-foreground hover:bg-secondary/80",
                 ghost: "hover:bg-accent hover:text-accent-foreground",
                 link: "text-primary underline-offset-4 hover:underline",
-                blue: "bg-[var(--button-bg)] text-white hover:bg-[#1772ebde]",
+                blue: "bg-[var(--button-bg)] text-white hover:bg-[#1768b9]",
                 theme: "bg-[#edf5fd] dark:bg-[#494D50]",
                 icon: "bg-transparent w-fit h-fit",
                 sidebar: "bg-background hover:bg-[#f2f5f7] text-center text-[var(--grey-fg)] hover:text-foreground hover:font-semibold",
                 selected: "bg-[var(--custom-grey)] font-semibold bg-background"
             },
             size: {
+                auth: "h-fit px-3 py-[10px] w-full rounded-[6px]",
                 default: "h-8 px-3 py-2 rounded-[6px]",
                 sm: "h-9 rounded-md px-3",
                 lg: "h-11 rounded-md px-8",

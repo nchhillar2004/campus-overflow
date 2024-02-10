@@ -4,7 +4,7 @@ import { TrendingUp } from "lucide-react";
 
 function TypographyH1(props: { title: string | number }) {
     return (
-        <h1 className="scroll-m-20 text-[24px] lg:text-[27px] tracking-tight">
+        <h1 className="scroll-m-20 text-[24px] leading-none lg:text-[27px] tracking-tight">
             {props.title}
         </h1>
     );
@@ -63,6 +63,15 @@ function SiteLogo() {
     )
 }
 
+function LargeSiteLogo() {
+    return(
+        <Link href='/' className="w-fit text-[26px] lg:text-[32px] items-center text-foreground flex">
+            <TrendingUp className="mr-1 text-[#e7700d]" size={40} />
+            BH<p className="font-semibold ml-[2px]">Finance</p>
+        </Link>
+    )
+}
+
 export {
     TypographyH1,
     TypographyH2,
@@ -70,5 +79,6 @@ export {
     TypographyP,
     TypographyList,
     TypographyCode,
-    SiteLogo
+    SiteLogo,
+    LargeSiteLogo
 };

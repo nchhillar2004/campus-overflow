@@ -74,7 +74,7 @@ export default async function RootLayout({
 
     return (
         <html lang="en" suppressHydrationWarning>
-            <body>
+            <body className="flex flex-col justify-between">
                 <AuthProvider session={session}>
                     <ThemeProvider
                         attribute="class"
@@ -83,8 +83,8 @@ export default async function RootLayout({
                     >
                         <Navbar />
                         <Toaster />
-                        <main className="pt-[50px] h-fit min-h-[50vh]">
-                            <div className="bhfs w-full">
+                        <main className="flex h-auto items-center justify-center pt-[50px]">
+                            <div className="bhfs h-full w-full">
                                 <Suspense fallback={<Loading />}>
                                     {children}
                                 </Suspense>
