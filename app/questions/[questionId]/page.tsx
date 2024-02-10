@@ -1,5 +1,11 @@
 import { TypographyH1 } from "@/components/typography";
 import React from "react";
+import SidebarLayout from "@/components/sidebar-layout";
+import SiteConfig from "@/config/site";
+
+export const metadata = {
+    title: `Questions - ${SiteConfig.title}`,
+};
 
 interface QuestionIdPageProps {
     params: {
@@ -9,10 +15,12 @@ interface QuestionIdPageProps {
 
 export default function QuestionId({ params }: QuestionIdPageProps) {
     return (
-        <div>
-            <div className="container">
-                <TypographyH1 title={params.questionId} />
+        <SidebarLayout>
+            <div>
+                <div className="container">
+                    <TypographyH1 title={params.questionId} />
+                </div>
             </div>
-        </div>
+        </SidebarLayout>
     );
 }

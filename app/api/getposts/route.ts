@@ -1,14 +1,14 @@
-import Posts from "@/models/PostSchema";
-import connect from "@/db/conn";
+import { connectDB } from "@/helpers/server-helper";
 import { NextResponse } from "next/server";
+import prisma from "@/prisma";
 
 export const dynamic = "force-dynamic";
 
 export const GET = async () => {
     try {
-        await connect();
+        await connectDB();
 
-        const posts = await Posts.find();
+        const posts = await prisma.posts.findMany();
 
         return new NextResponse(JSON.stringify(posts), {
             status: 200,
@@ -19,5 +19,7 @@ export const GET = async () => {
         return new NextResponse(`Internal Server Error: ${error.message}`, {
             status: 500,
         });
+    }finally{
+        await prisma.$disconnect();
     }
 };

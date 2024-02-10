@@ -19,14 +19,14 @@ const CreatePost = () => {
     const handlePost = async (e: any) => {
         e.preventDefault();
         const title = e.target[0].value;
-        const content = e.target[1].value;
-        const tag = e.target[2].value || "bhfs";
+        const body = e.target[1].value;
+        const tags = e.target[2].value;
 
-        if (!title || !content) {
+        if (!title || !body) {
             toast.error("Fill all fields");
         }
         try {
-            const author: string = session.user?.username;
+            const authorId: any = session.user?.username;
 
             const res = await fetch("/api/createpost", {
                 method: "POST",
@@ -35,9 +35,9 @@ const CreatePost = () => {
                 },
                 body: JSON.stringify({
                     title,
-                    content,
-                    author,
-                    tag,
+                    body,
+                    authorId,
+                    tags,
                     time,
                 }),
             });

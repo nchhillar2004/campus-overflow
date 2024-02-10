@@ -1,10 +1,12 @@
-import Users from "@/models/UserSchema";
-import connect from "@/db/conn";
+import prisma from "@/prisma";
+import { connectDB } from "@/helpers/server-helper";
 import { NextResponse } from "next/server";
+
 export const dynamic = "force-dynamic";
+
 export const POST = async (request: any) => {
     try {
-        await connect();
+        await connectDB();
 
         const { username } = await request.json();
 
@@ -14,7 +16,7 @@ export const POST = async (request: any) => {
             });
         }
 
-        const user = await Users.findOne({ username });
+        const user = await prisma.users.findUnique({where: { username: username }});
 
         if (!user) {
             return new NextResponse(JSON.stringify("User not found"), {
@@ -31,5 +33,7 @@ export const POST = async (request: any) => {
         return new NextResponse(`chle: ${error.message}`, {
             status: 500,
         });
+    }finally{
+        await prisma.$disconnect();
     }
 };

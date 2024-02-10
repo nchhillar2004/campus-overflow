@@ -11,12 +11,13 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { MobileMenu } from "./mobile-menu";
 import { useSession } from "next-auth/react";
-import { Loading, SmallLoading } from "../loading";
+import { SmallLoading } from "../loading";
 import Image from "next/image";
 import SearchBar from "../common/search-bar";
 import { Suspense } from "react";
 import { signOut } from "next-auth/react";
 import { HelpCircle } from "lucide-react";
+import { LogOut } from "lucide-react";
 
 export default function Navbar() {
     const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -25,7 +26,6 @@ export default function Navbar() {
         status: sessionStatus,
         update: sessionUpdate,
     }: any = useSession();
-    console.log(session);
     
 
     const toggleMobileSearch = () => {
@@ -33,7 +33,7 @@ export default function Navbar() {
     };
 
     return (
-        <header className="fixed top-0 w-full z-10">
+        <header className="fixed top-0 w-full z-20">
             <div className="w-full h-[50px] bg-background" id="top">
                 <div className="container flex items-center h-full">
                     <div className="flex items-center h-full">
@@ -64,11 +64,11 @@ export default function Navbar() {
                             size="myIcon"
                             onClick={toggleMobileSearch}
                         >
-                            <Search />
+                            <Search size={20} />
                         </Button>
                     </div>
 
-                    <div className="h-full">
+                    <div className="h-full max-sm:overflow-x-scroll">
                         {session ? (
                             <div className="flex items-center h-full">
                                 <Suspense fallback={<SmallLoading />}>
@@ -104,7 +104,7 @@ export default function Navbar() {
                                             signOut();
                                         }}
                                     >
-                                        Logout
+                                        <LogOut />
                                     </Button>
                                 </Suspense>
                             </div>

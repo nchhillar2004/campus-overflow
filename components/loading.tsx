@@ -2,7 +2,7 @@ import React from "react";
 
 function Loading() {
     return (
-        <div className="container flex items-center justify-center h-full">
+        <div className="container flex items-center justify-center h-full min-h-[50vh]">
             <div className="loader"></div>
         </div>
     );

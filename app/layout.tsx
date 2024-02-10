@@ -83,7 +83,7 @@ export default async function RootLayout({
                     >
                         <Navbar />
                         <Toaster />
-                        <main className="min-h-[50%] pt-[50px] h-fit">
+                        <main className="pt-[50px] h-fit min-h-[50vh]">
                             <div className="bhfs w-full">
                                 <Suspense fallback={<Loading />}>
                                     {children}

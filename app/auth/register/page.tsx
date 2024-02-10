@@ -39,7 +39,7 @@ export default function Register() {
         const password = e.target[4].value;
         const validUsername = isUsernameValid(username);
         const validEmail = isEmailValid(email);
-
+        
         if (!fname || !lname || !username || !email || !password) {
             toast.error("Fill all fields");
         } else if (!validUsername) {
@@ -53,7 +53,8 @@ export default function Register() {
         } else {
             try {
                 const name = fname + " " + lname;
-                const res = await fetch("/api/register", {
+                
+                const res = await fetch("http://localhost:3000/api/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

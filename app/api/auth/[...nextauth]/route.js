@@ -1,9 +1,10 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import Users from "@/models/UserSchema";
-import connect from "@/db/conn";
 import bcrypt from "bcryptjs";
+import prisma from "@/prisma/index";
+
 export const dynamic = "force-dynamic";
+
 const authOptions = {
     pages: {
         signIn: "/auth/login",
@@ -21,11 +22,11 @@ const authOptions = {
                 password: { label: "Password", type: "password" },
             },
             async authorize(credentials) {
-                await connect();
+                await prisma.$connect();
 
-                const user = await Users.findOne({
+                const user = await prisma.users.findUnique({where: {
                     username: credentials.username,
-                });
+                }});
 
                 if (user) {
                     const isPasswordCorrect = await bcrypt.compare(
@@ -43,9 +44,9 @@ const authOptions = {
     callbacks: {
         async jwt({ token, user, trigger, session }) {
             if (trigger === "update") {
-                return { ...token, ...session.user }
+                return { ...token, ...session.user };
             }
-            return {...token, ...user};
+            return { ...token, ...user };
         },
         async session({ session, token }) {
             session.user = token;

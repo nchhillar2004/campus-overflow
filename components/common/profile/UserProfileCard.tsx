@@ -1,14 +1,15 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import React from "react";
-import { Separator } from "../ui/separator";
+import { Separator } from "../../ui/separator";
 import Link from "next/link";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
+import { TypographyH2 } from "../../typography";
+import { ProfileTabs } from "./profile-tabs";
 
 export default function UserProfileCard(props: {
     fname: string;
     image: string | StaticImport;
-    banner: string | StaticImport;
     username: string;
     role: string;
     time: string;
@@ -19,13 +20,7 @@ export default function UserProfileCard(props: {
     return (
         <section className="pb-4">
             <div className="rounded-md h-full min-h-[70vh]">
-                <Image
-                    src={props.banner}
-                    width={1600}
-                    height={500}
-                    alt="Banner"
-                />
-                <div className="flex flex-col lg:flex-row relative z-1 top-0 lg:-top-[11rem] h-[60%] w-full lg:justify-between lg:w-[96%] m-auto">
+                <div className="flex flex-col lg:flex-row z-1 top-0 lg:-top-[11rem] h-[60%] w-full lg:justify-between lg:w-[96%] m-auto">
                     <div className="left w-full lg:w-[80%]">
                         <div className="usercard flex-col lg:flex-row lg:items-start w-full ">
                             <Image
@@ -33,7 +28,7 @@ export default function UserProfileCard(props: {
                                 height={120}
                                 width={120}
                                 alt={`${props.fname} profile pic`}
-                                className="lg:w-[200px] lg:h-[200px] mr-4 mb-4"
+                                className="lg:w-[120px] lg:h-[120px] mr-4 mb-4"
                             />
                             <div className="flex flex-col">
                                 <span>
@@ -60,6 +55,10 @@ export default function UserProfileCard(props: {
                                 <p>{props.role}</p>
                                 <time>{props.time}</time>
                             </div>
+                        </div>
+                        
+                        <div className="usercard">
+                            <ProfileTabs username={props.username} />
                         </div>
                     </div>
 

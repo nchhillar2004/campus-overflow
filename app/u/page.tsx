@@ -2,7 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import SiteConfig from "@/config/site";
-import { TypographyH1, TypographyH2, TypographyP, TypographyList } from '@/components/typography';
+import {
+    TypographyH1,
+    TypographyH2,
+    TypographyP,
+    TypographyList,
+} from "@/components/typography";
+import SidebarLayout from "@/components/sidebar-layout";
+import { Dot, Star } from "lucide-react";
 
 interface User {
     name: String;
@@ -27,48 +34,73 @@ const Users = async () => {
     const data: User[] = await response.json();
 
     return (
-        <div>
-            <section className="container rounded-sm">
-                <TypographyH1 title="Users" />
-                {data.map((user) => (
-                    <Link key={user._id} href={`/u/${user.username}`}>
-                        <div
-                            key={user._id}
-                            className="flex p-3 mb-3 border rounded-md"
-                        >
-                            <div className="left">
-                                <Image
-                                    src={user.image}
-                                    width={32}
-                                    height={32}
-                                    alt="Profile pic"
-                                    className="h-[30px] w-[30px] rounded-full"
-                                />
-                            </div>
-                            <div className="right">
-                                {user?.isVerified ? (
-                                    <div className="flex w-full">
-                                        <p className="mr-1">{user.name}</p>
-                                        <Image
-                                            src="/verified.png"
-                                            width={18}
-                                            height={18}
-                                            alt="Verified user"
-                                            className="w-[20px] h-[20px]"
-                                        />
+        <SidebarLayout>
+            <div>
+                <section className="">
+                    <div className="flex">
+                        <TypographyH1 title="Users" />
+                    </div>
+                    <div className="flex justify-between flex-wrap">
+                        {data.map((user) => (
+                            <li
+                                key={user._id}
+                                className="list-none p-1 w-[240px]"
+                            >
+                                <div className="flex">
+                                    <Image
+                                        src={user.image}
+                                        width={48}
+                                        height={48}
+                                        alt={`${user.name}`}
+                                        className="rounded-[4px] h-[48px] w-[48px]"
+                                    />
+                                    <div className="flex flex-col ml-2">
+                                        {user.isVerified ? (
+                                            <Link
+                                                href={`/u/${user.username}`}
+                                                className="text-[15px] leading-[15px] flex"
+                                            >
+                                                {user.name}
+                                                <Image
+                                                    src="/verified.png"
+                                                    height={16}
+                                                    width={16}
+                                                    alt="Verified"
+                                                    className="ml-1"
+                                                />
+                                            </Link>
+                                        ) : (
+                                            <Link
+                                                href={`/u/${user.username}`}
+                                                className="text-[15px] leading-[15px]"
+                                            >
+                                                {user.name}
+                                            </Link>
+                                        )}
+                                        <p className="text-sm text-[var(--custom-grey-fg)] my-1">
+                                            @{user.username}
+                                        </p>
+                                        <div className="flex">
+                                            <p className="text-sm">
+                                                {user.role}
+                                            </p>
+                                            <p className="flex items-center ml-1">
+                                                <Dot
+                                                    size={24}
+                                                    strokeWidth={3}
+                                                    color="yellow"
+                                                />
+                                                {user.stars}
+                                            </p>
+                                        </div>
                                     </div>
-                                ) : (
-                                    <p>{user.name}</p>
-                                )}
-                                <p>@{user.username}</p>
-                                <p>{user.role}</p>
-                                <p>{user.stars} Stars</p>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
-            </section>
-        </div>
+                                </div>
+                            </li>
+                        ))}
+                    </div>
+                </section>
+            </div>
+        </SidebarLayout>
     );
 };
 

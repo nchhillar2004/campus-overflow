@@ -1,14 +1,14 @@
-import Users from "@/models/UserSchema";
-import connect from "@/db/conn";
+import prisma from "@/prisma";
+import { connectDB } from "@/helpers/server-helper";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
 export const GET = async (request: any) => {
     try {
-        await connect();
+        await connectDB();
 
-        const users = await Users.find();
+        const users = await prisma.users.findMany();
 
         return new NextResponse(JSON.stringify(users), {
             status: 200,
@@ -19,5 +19,7 @@ export const GET = async (request: any) => {
         return new NextResponse(`Internal Server Error: ${error.message}`, {
             status: 500,
         });
+    }finally{
+        await prisma.$disconnect();
     }
 };

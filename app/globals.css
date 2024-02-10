@@ -8,17 +8,21 @@ body,
     height: 100%;
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
         Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
 }
 
 @layer base {
     :root {
         --button-bg: #1772eb;
         --custom-grey: #e3e6e8;
+        --custom-grey-fg: #636B74;
         --blue-bg: #edf5fd;
         --link-fg: #1b75d0;
         --black-225: #d6d9dc;
         --blue-fg: #155ca2;
         --grey-fg: #0c0d0e;
+        --orange-bg: #fbdbc1;
+        --orange-card: #fdf7e7;
         --background: 0 0% 100%;
         --foreground: 0 0% 3.9%;
         --card: 0 0% 100%;
@@ -113,8 +117,8 @@ textarea:focus {
 }
 
 .card {
-    background-color: #f7fafc;
-    border-radius: 0.375rem;
+    background-color: var(--orange-card);
+    border-radius: 2px;
     border: 1px solid #e2e8f0;
     padding: 1rem;
 }
@@ -123,11 +127,16 @@ textarea:focus {
     .desktop-menu {
         display: none;
     }
+    .container {
+        width: 98% !important;
+        max-width: none !important;
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .container {
         width: 96% !important;
+        max-width: none !important;
     }
     .desktop-menu {
         display: none;
@@ -137,6 +146,9 @@ textarea:focus {
 @media (min-width: 1025px) {
     .mobile-menu {
         display: none;
+    }
+    .container {
+        max-width: none !important;
     }
 }
 
@@ -184,4 +196,16 @@ textarea:focus {
     to {
         transform: rotate(1turn);
     }
+}
+
+
+.sidebar_option:hover,
+.sidebar_option:hover>p,
+.sidebar_option:hover>h3,
+.sidebar_option--active,
+.sidebar_option--active>h3,
+.sidebar_option--active>p{
+    background-color: #fcecec;
+    color: #c04b37 !important;
+    font-weight: 500 !important;
 }
