@@ -45,6 +45,7 @@ export default async function QuestionsTab(props: { username: String }) {
                         <PostCard
                             id={ques.id}
                             href={`/questions/${ques.id}`}
+                            hrefUser={`/u/`}
                             title={ques.title}
                             content={ques.body}
                             author={ques.authorId}
