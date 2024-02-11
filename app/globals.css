@@ -172,7 +172,6 @@ textarea:focus {
     padding: 16px;
     border-radius: 4px;
     display: flex;
-    align-items: center;
     background-color: white;
 }
 

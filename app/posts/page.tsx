@@ -7,6 +7,10 @@ import { Button } from "@/components/ui/button";
 import { TypographyH1 } from "@/components/typography";
 import SidebarLayout from "@/components/sidebar-layout";
 
+export const metadata = {
+    title: `Posts - ${SiteConfig.title}`,
+};
+
 interface Post {
     title: String;
     id: String;
@@ -23,6 +27,7 @@ export default async function PostsPage() {
         cache: "no-store",
     });
     const posts: Post[] = await res.json();
+    const postsLength = posts.length;
 
     return (
         <SidebarLayout>
@@ -30,13 +35,13 @@ export default async function PostsPage() {
                 <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
                     <div className="left lg:w-5/6 rounded-md h-full">
                         <div className="flex  w-full items-center justify-between">
-                            <TypographyH1 title="Posts" />
+                            <TypographyH1 title={`${postsLength} Posts`} />
                             <Button variant="blue" asChild>
                                 <Link href="/posts/create">Create a post</Link>
                             </Button>
                         </div>
                         <Suspense fallback={<Loading />}>
-                            <div className="flex flex-col-reverse mt-5">
+                            <ul className="flex flex-col-reverse mt-5">
                                 {posts.map((post) => (
                                     <li
                                         key={post._id}
@@ -50,14 +55,13 @@ export default async function PostsPage() {
                                             content={post.body}
                                             time={post.time}
                                             tags={post.tagIDs}
-                                            hrefUser={`/u/${post.authorId}`}
+                                            hrefUser={`/u/${post.authorUsername}`}
                                         />
                                     </li>
                                 ))}
-                            </div>
+                            </ul>
                         </Suspense>
                     </div>
-                    <div className="right h-full py-[10px]"></div>
                 </div>
             </div>
         </SidebarLayout>

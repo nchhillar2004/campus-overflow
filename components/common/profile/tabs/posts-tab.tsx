@@ -33,16 +33,16 @@ export default async function PostsTab(props: { username: String }) {
     const data = await user.json();
     const posts: Post[] = data?.posts;
     const mappedPosts = posts.map((post: Post) => {
-        const { id, title, body, authorId, authorUsername, tagIDs, time, likes } = post;
-        return { id, title, body, authorId, authorUsername, tagIDs, time, likes };
+        const { _id, id, title, body, authorId, authorUsername, tagIDs, time, likes } = post;
+        return { _id, id, title, body, authorId, authorUsername, tagIDs, time, likes };
     });
     const postCount = mappedPosts.length;
     return (
         <TabsContent value="posts">
             <TypographyH1 title={`${postCount} Posts`} />
             <CardContent className="mt-4">
-                {mappedPosts.map((post, index) => (
-                    <li key={index} className="list-none">
+                {mappedPosts.map((post) => (
+                    <li key={post._id} className="list-none">
                         <PostCard
                             id={post.id}
                             href={`/posts/${post.id}`}

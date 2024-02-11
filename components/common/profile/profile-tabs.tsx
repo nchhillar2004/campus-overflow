@@ -2,6 +2,8 @@ import React from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PostsTab from "./tabs/posts-tab";
 import QuestionsTab from "./tabs/questions-tab";
+import { Suspense } from "react";
+import { Loading } from "@/components/loading";
 
 export function ProfileTabs(props: { username: String }) {
     const username = props.username;
@@ -12,8 +14,10 @@ export function ProfileTabs(props: { username: String }) {
                 <TabsTrigger value="questions">Questions</TabsTrigger>
                 <TabsTrigger value="posts">Posts</TabsTrigger>
             </TabsList>
-            <QuestionsTab username={username} />
-            <PostsTab username={username} />
+            <Suspense fallback={<Loading />}>
+                <QuestionsTab username={username} />
+                <PostsTab username={username} />
+            </Suspense>
         </Tabs>
     );
 }

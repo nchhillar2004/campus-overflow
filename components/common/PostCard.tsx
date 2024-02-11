@@ -16,7 +16,8 @@ export default async function PostCard(props: {
         <div className="card">
             <div className="flex flex-col">
                 <Link href={props.href}>
-                <h1 className="text-[18px] font-medium">{props.title}</h1></Link>
+                    <h1 className="text-[18px] font-medium">{props.title}</h1>
+                </Link>
                 <p className="flex text-sm text-slate-500">
                     By:
                     <Link
@@ -29,13 +30,13 @@ export default async function PostCard(props: {
                 <p className="my-2 overflow-hidden text-ellipsis line-clamp-5">
                     {props.content}
                 </p>
-                <div className="flex tag">
+                <ul className="flex tag">
                     {props.tags?.map((tag, index) => (
-                        <p key={index} className="mr-2">
-                            #{tag}
-                        </p>
+                        <li className="list-none" key={index}>
+                            <p className="mr-2">#{tag}</p>
+                        </li>
                     ))}
-                </div>
+                </ul>
                 <p className="text-xs text-slate-400">{props.time}</p>
             </div>
         </div>

@@ -18,6 +18,7 @@ import { Suspense } from "react";
 import { signOut } from "next-auth/react";
 import { HelpCircle } from "lucide-react";
 import { LogOut } from "lucide-react";
+import { Tooltip } from "@mui/material";
 
 export default function Navbar() {
     const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -79,10 +80,12 @@ export default function Navbar() {
                                     >
                                         <Link href="/u/profile">
                                             <Image
+                                            fetchPriority="high"
                                                 src={session.user?.picture || session.user?._doc?.image || session.user?.image}
                                                 width={20}
                                                 height={20}
                                                 alt={session.user?.name}
+                                                className="rounded-[4px]"
                                             />
                                         </Link>
                                     </Button>

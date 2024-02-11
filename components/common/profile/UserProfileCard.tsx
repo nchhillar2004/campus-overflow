@@ -4,8 +4,11 @@ import React from "react";
 import { Separator } from "../../ui/separator";
 import Link from "next/link";
 import { Button } from "../../ui/button";
-import { TypographyH2 } from "../../typography";
 import { ProfileTabs } from "./profile-tabs";
+import EditIcon from "@mui/icons-material/Edit";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { IconButton } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function UserProfileCard(props: {
     fname: string;
@@ -28,35 +31,59 @@ export default function UserProfileCard(props: {
                                 height={120}
                                 width={120}
                                 alt={`${props.fname} profile pic`}
-                                className="lg:w-[120px] lg:h-[120px] mr-4 mb-4"
+                                className="w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] mr-4 mb-4 rounded-sm"
                             />
-                            <div className="flex flex-col">
-                                <span>
-                                    {props.verified ? (
-                                        <div className="flex items-center">
-                                            <h1 className="font-[24px] mr-1">
+                            <div className="flex w-full justify-between">
+                                <div className="flex flex-col">
+                                    <span>
+                                        {props.verified ? (
+                                            <div className="flex items-center">
+                                                <h1 className="font-[24px] mr-1">
+                                                    {props.fname}
+                                                </h1>
+                                                <Image
+                                                    src="/verified.png"
+                                                    width={20}
+                                                    height={20}
+                                                    alt="Verified user"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <h1 className="font-[24px]">
                                                 {props.fname}
                                             </h1>
-                                            <Image
-                                                src="/verified.png"
-                                                width={20}
-                                                height={20}
-                                                alt="Verified user"
-                                            />
-                                        </div>
-                                    ) : (
-                                        <h1 className="font-[24px]">
-                                            {props.fname}
-                                        </h1>
-                                    )}
-                                </span>
-                                <p>@{props.username}</p>
-                                <p>{props.email}</p>
-                                <p>{props.role}</p>
-                                <time>{props.time}</time>
+                                        )}
+                                    </span>
+                                    <p>@{props.username}</p>
+                                    <p>{props.email}</p>
+                                    <p>{props.role}</p>
+                                    <time>{props.time}</time>
+                                </div>
+                                {props.isOwner ? (
+                                    <div className="flex space-x-2">
+                                        <Tooltip title="Edit profile">
+                                            <Button variant="secondary" asChild>
+                                                <Link href="/u/profile/settings">
+                                                    <EditIcon className="mr-1" />
+                                                    Edit profile
+                                                </Link>
+                                            </Button>
+                                        </Tooltip>
+                                    </div>
+                                ) : (
+                                    <div className="flex space-x-2">
+                                        <Tooltip title="Like">
+                                            <Button variant="icon">
+                                                <IconButton>
+                                                    <FavoriteBorderIcon className="mr-1" />
+                                                </IconButton>
+                                            </Button>
+                                        </Tooltip>
+                                    </div>
+                                )}
                             </div>
                         </div>
-                        
+
                         <div className="usercard">
                             <ProfileTabs username={props.username} />
                         </div>
@@ -89,7 +116,6 @@ export default function UserProfileCard(props: {
                                         />
                                         <Link
                                             href="/services/verify"
-                                            
                                             className="p-2 text-center border rounded w-full"
                                         >
                                             Get Verified
@@ -98,11 +124,11 @@ export default function UserProfileCard(props: {
                                 )}
                             </div>
                         ) : (
-                            <div className="usercard flex-col justify-between w-full">
+                            <div className="usercard items-center flex-col justify-between w-full">
                                 <h1>Contact</h1>
                                 <Separator />
                                 <h1>{props.fname}</h1>
-                                <Button>Message</Button>
+                                <Button variant='blue' disabled>Message</Button>
                             </div>
                         )}
                     </div>

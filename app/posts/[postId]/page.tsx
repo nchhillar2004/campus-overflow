@@ -1,6 +1,12 @@
 import React from "react";
-import SiteConfig from "@/config/site";
+import { TypographyH1, TypographyH2 } from "@/components/typography";
 import SidebarLayout from "@/components/sidebar-layout";
+import { getPostsById } from "@/data/post";
+import SiteConfig from "@/config/site";
+
+export const metadata = {
+    title: `Posts - ${SiteConfig.title}`,
+};
 
 interface PostIdPageProps {
     params: {
@@ -9,27 +15,15 @@ interface PostIdPageProps {
 }
 
 export default async function PostIdPage({ params }: PostIdPageProps) {
-    const postId = params.postId;
-
-    const response = await fetch(`${SiteConfig.url}/api/getonepost`, {
-        cache: "no-store",
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ postId }),
-    });
-
-    if (!response.ok) {
-        return <div>Post not found</div>;
-    }
-
-    const data = await response.json();
+    const post = await getPostsById(params.postId);
 
     return (
         <SidebarLayout>
             <div className="post">
-                {data.title}
+                <TypographyH1 title={`${post?.title}`} />
+                <br></br>
+                <TypographyH2 title={post?.body} />
+                <p>Posted: {post?.time}</p>
             </div>
         </SidebarLayout>
     );
