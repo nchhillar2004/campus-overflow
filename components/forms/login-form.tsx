@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const FormSchema = z.object({
     username: z
@@ -29,8 +30,7 @@ const FormSchema = z.object({
             message: "Invalid username.",
         })
         .refine((data) => /^[a-z](?:[-a-z0-9]*[a-z0-9])?$/i.test(data), {
-            message:
-                "Invalid username.",
+            message: "Invalid username.",
         }),
     password: z
         .string()
@@ -62,7 +62,9 @@ export function LoginForm() {
                 username,
                 password,
             });
-
+            if (res?.status === 401) {
+                toast.error("User not found.");
+            }
             if (res?.error) {
                 if (res?.url) router.replace("/");
             } else {
@@ -117,11 +119,11 @@ export function LoginForm() {
                 />
 
                 <div className="flex flex-col space-y-2 items-center">
-                    <Button variant="blue" size='auth' type="submit">
+                    <Button variant="blue" size="auth" type="submit">
                         Login
                     </Button>
                     <p className="text-[var(--grey-fg)]">OR</p>
-                    <Button variant="blue" size='auth' type="button" asChild>
+                    <Button variant="blue" size="auth" type="button" asChild>
                         <Link href="/auth/register">Register</Link>
                     </Button>
                 </div>

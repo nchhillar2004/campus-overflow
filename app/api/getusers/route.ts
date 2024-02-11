@@ -8,7 +8,9 @@ export const GET = async (request: any) => {
     try {
         await connectDB();
 
-        const users = await prisma.users.findMany();
+        const users = await prisma.users.findMany({
+            include: { posts: true },
+        });
 
         return new NextResponse(JSON.stringify(users), {
             status: 200,
@@ -19,7 +21,7 @@ export const GET = async (request: any) => {
         return new NextResponse(`Internal Server Error: ${error.message}`, {
             status: 500,
         });
-    }finally{
+    } finally {
         await prisma.$disconnect();
     }
 };

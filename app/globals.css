@@ -126,10 +126,13 @@ textarea:focus {
 }
 
 .card {
-    background-color: var(--orange-card);
+    background-color: var(--background);
     border-radius: 2px;
     border: 1px solid #e2e8f0;
-    padding: 1rem;
+    padding: 16px;
+    overflow: hidden;
+    width: 100%;
+    height: fit-content;
 }
 
 @media (max-width: 768px) {

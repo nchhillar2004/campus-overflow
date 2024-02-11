@@ -9,7 +9,7 @@ import {
     TypographyList,
 } from "@/components/typography";
 import SidebarLayout from "@/components/sidebar-layout";
-import { Dot, Star } from "lucide-react";
+import { Divide, Dot, Star } from "lucide-react";
 
 interface User {
     name: String;
@@ -20,6 +20,7 @@ interface User {
     isVerified: Boolean;
     image: string | StaticImport;
     stars: String;
+    posts: Array<string>;
 }
 
 const Users = async () => {
@@ -91,6 +92,7 @@ const Users = async () => {
                                                     color="yellow"
                                                 />
                                                 {user.stars}
+                                                {user.posts?.length}
                                             </p>
                                         </div>
                                     </div>

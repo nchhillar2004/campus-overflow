@@ -24,10 +24,15 @@ const authOptions = {
             async authorize(credentials) {
                 await prisma.$connect();
 
-                const user = await prisma.users.findUnique({where: {
-                    username: credentials.username,
-                }});
+                const user = await prisma.users.findUnique({
+                    where: {
+                        username: credentials.username,
+                    },
+                });
 
+                if (!user) {
+                    throw new Error("User not found");
+                }
                 if (user) {
                     const isPasswordCorrect = await bcrypt.compare(
                         credentials.password,

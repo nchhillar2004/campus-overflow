@@ -8,26 +8,26 @@ export const POST = async (request: any) => {
     try {
         await connectDB();
 
-        const { username } = await request.json();
+        const { postId } = await request.json();
 
-        if (!username) {
+        if (!postId) {
             return new NextResponse("Username not provided", {
                 status: 400,
             });
         }
 
-        const user = await prisma.users.findUnique({
-            where: { username: username },
-            include: { posts: true, questions: true },
+        const post = await prisma.posts.findUnique({
+            where: { id: postId },
+            include: { tags: true, author: true },
         });
 
-        if (!user) {
-            return new NextResponse(JSON.stringify("User not found"), {
+        if (!post) {
+            return new NextResponse(JSON.stringify("post not found"), {
                 status: 404,
             });
         }
 
-        return new NextResponse(JSON.stringify(user), {
+        return new NextResponse(JSON.stringify(post), {
             status: 200,
             headers: { "Content-Type": "application/json" },
         });

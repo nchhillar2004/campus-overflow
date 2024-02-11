@@ -8,21 +8,23 @@ generator client {
 }
 
 model Posts {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  body      String
-  author    Users?     @relation(fields: [authorId], references: [id])
-  authorId  String?    @db.ObjectId
-  createdAt DateTime   @default(now())
-  comments  Comments[]
-  tagIDs    String[]   @db.ObjectId
-  tags      Tags[]     @relation(fields: [tagIDs], references: [id])
-  time      String
-  likes     Int?
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  body           String
+  authorUsername String?
+  author         Users?     @relation(fields: [authorId], references: [id])
+  authorId       String?    @db.ObjectId
+  createdAt      DateTime   @default(now())
+  comments       Comments[]
+  tagIDs         String[]   @db.ObjectId
+  tags           Tags[]     @relation(fields: [tagIDs], references: [id])
+  time           String
+  likes          Int?
 }
 
 model Users {
   id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  name       String?
   username   String      @unique
   email      String      @unique
   password   String?
@@ -34,7 +36,6 @@ model Users {
   isTimeout  Boolean     @default(false)
   image      String
   starts     Int         @default(0)
-  name       String?
   address    Address?
   posts      Posts[]
   comments   Comments[]
@@ -60,8 +61,8 @@ model Comments {
 model Questions {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   question  String
-  author    Users     @relation(fields: [authorId], references: [id])
-  authorId  String    @db.ObjectId
+  author    Users?    @relation(fields: [authorId], references: [id])
+  authorId  String?   @db.ObjectId
   postId    String    @db.ObjectId
   answers   Answers[]
   time      String
@@ -83,7 +84,7 @@ model Answers {
 
 model Tags {
   id          String      @id @default(auto()) @map("_id") @db.ObjectId
-  name        String      @unique @db.ObjectId
+  name        String      @unique
   questionIDs String[]    @db.ObjectId
   questions   Questions[] @relation(fields: [questionIDs], references: [id])
   postIDs     String[]    @db.ObjectId

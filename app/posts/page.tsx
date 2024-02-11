@@ -9,52 +9,55 @@ import SidebarLayout from "@/components/sidebar-layout";
 
 interface Post {
     title: String;
+    id: String;
     _id: null | undefined | Key | React.Key;
     body: String;
     time: String;
     authorId: String;
-    tagIDs: String[]; 
+    authorUsername: String;
+    tagIDs: String[];
 }
 
 export default async function PostsPage() {
     const res = await fetch(`${SiteConfig.url}/api/getposts`, {
         cache: "no-store",
     });
-    if (!res.ok) {
-        throw new Error("Failed to fetch data");
-    }
     const posts: Post[] = await res.json();
-    
+
     return (
         <SidebarLayout>
             <div className="container relative">
                 <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
                     <div className="left lg:w-5/6 rounded-md h-full">
-                        <TypographyH1 title="Posts" />
+                        <div className="flex  w-full items-center justify-between">
+                            <TypographyH1 title="Posts" />
+                            <Button variant="blue" asChild>
+                                <Link href="/posts/create">Create a post</Link>
+                            </Button>
+                        </div>
                         <Suspense fallback={<Loading />}>
-                            <div className="flex flex-col-reverse">
+                            <div className="flex flex-col-reverse mt-5">
                                 {posts.map((post) => (
                                     <li
                                         key={post._id}
                                         className="list-none p-0 m-0"
                                     >
                                         <PostCard
+                                            href={`/posts/${post.id}`}
+                                            id={post.id}
                                             title={post.title}
-                                            author={post.authorId}
+                                            author={post.authorUsername}
                                             content={post.body}
                                             time={post.time}
                                             tags={post.tagIDs}
+                                            hrefUser={`/u/${post.authorId}`}
                                         />
                                     </li>
                                 ))}
                             </div>
                         </Suspense>
                     </div>
-                    <div className="right h-full py-[10px]">
-                        <Button variant="blue" asChild>
-                            <Link href="/posts/create">Create a post</Link>
-                        </Button>
-                    </div>
+                    <div className="right h-full py-[10px]"></div>
                 </div>
             </div>
         </SidebarLayout>
