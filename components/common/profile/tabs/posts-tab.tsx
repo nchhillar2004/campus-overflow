@@ -37,6 +37,7 @@ export default async function PostsTab(props: { username: String }) {
         return { _id, id, title, body, authorId, authorUsername, tagIDs, time, likes };
     });
     const postCount = mappedPosts.length;
+    
     return (
         <TabsContent value="posts">
             <TypographyH1 title={`${postCount} Posts`} />
@@ -49,7 +50,7 @@ export default async function PostsTab(props: { username: String }) {
                             title={post.title}
                             hrefUser={`/u/${post.authorUsername}`}
                             content={post.body}
-                            author={post.authorId}
+                            author={post.authorUsername}
                             tags={post.tagIDs}
                             time={post.time}
                         />

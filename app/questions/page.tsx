@@ -6,6 +6,8 @@ import SiteConfig from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { TypographyH1 } from "@/components/typography";
 import SidebarLayout from "@/components/sidebar-layout";
+import FilterButtons from "@/components/common/FilterButtons";
+import InfoCard from "@/components/notifications/InfoCard";
 
 interface Question {
     title: String;
@@ -27,15 +29,15 @@ export default async function Questions() {
 
     return (
         <SidebarLayout>
-            <div className="container relative">
                 <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
-                    <div className="left lg:w-5/6 rounded-md h-full">
+                    <div className="left lg:w-3/4 rounded-md h-full">
                         <div className="flex  w-full items-center justify-between">
                             <TypographyH1 title={`${questionsLength} Questions`} />
                             <Button variant="blue" asChild>
                                 <Link href="/questions/ask">Ask a question</Link>
                             </Button>
                         </div>
+                        <FilterButtons/>
                         <Suspense fallback={<Loading />}>
                             <ul className="flex flex-col-reverse mt-5">
                                 {questions.map((question) => (
@@ -58,8 +60,10 @@ export default async function Questions() {
                             </ul>
                         </Suspense>
                     </div>
+                    <div className="right lg:w-[22%] mb-4">
+                        <InfoCard heading="Features" content="Users can ask questions and get answers within 24 hours." />
+                    </div>
                 </div>
-            </div>
         </SidebarLayout>
     );
 }

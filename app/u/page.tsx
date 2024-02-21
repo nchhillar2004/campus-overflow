@@ -6,6 +6,8 @@ import { TypographyH1 } from "@/components/typography";
 import SidebarLayout from "@/components/sidebar-layout";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import FilterButtons from "@/components/common/FilterButtons";
+import InfoCard from "@/components/notifications/InfoCard";
 
 interface User {
     name: String;
@@ -33,16 +35,15 @@ const Users = async () => {
 
     return (
         <SidebarLayout>
-            <div className="container relative">
                 <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
-                    <div className="left lg:w-5/6 rounded-md h-full">
+                    <div className="left lg:w-3/4 rounded-md h-full">
                         <div className="flex  w-full items-center justify-between">
                             <TypographyH1 title={`${userLength} Users`} />
                             <Button variant="blue" asChild>
-                                <Link href="/">Filter</Link>
+                                <Link href="/">Search</Link>
                             </Button>
                         </div>
-
+                        <FilterButtons/>
                         <div className="flex justify-between flex-wrap mt-5 max-md:flex-col max-md:space-x-1">
                             {data.map((user) => (
                                 <li
@@ -99,8 +100,10 @@ const Users = async () => {
                             ))}
                         </div>
                     </div>
+                    <div className="right lg:w-[22%] mb-4">
+                        <InfoCard heading="Features" content="Users are by default aligned from most stars to least." />
+                    </div>
                 </div>
-            </div>
         </SidebarLayout>
     );
 };

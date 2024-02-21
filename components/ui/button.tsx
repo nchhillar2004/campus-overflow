@@ -24,7 +24,8 @@ const buttonVariants = cva(
                 theme: "bg-[#edf5fd] dark:bg-[#494D50]",
                 icon: "bg-transparent w-fit h-fit",
                 sidebar: "bg-background hover:bg-[#f2f5f7] text-center text-[var(--grey-fg)] hover:text-foreground hover:font-semibold",
-                selected: "bg-[var(--custom-grey)] font-semibold bg-background"
+                selected: "bg-[var(--custom-grey)] font-semibold bg-background",
+                filter: "bg-background hover:bg-accent"
             },
             size: {
                 auth: "h-fit px-3 py-[10px] w-full rounded-[6px]",
@@ -35,7 +36,8 @@ const buttonVariants = cva(
                 myIcon: "h-full w-fit px-2 rounded-[0px]",
                 mySize: "h-full w-fit px-2 rounded-[0px]",
                 round: "h-fit w-fit py-2 px-3 rounded-[16px]",
-                sidebar: "w-full py-3 px-4 rounded-l-md"
+                sidebar: "w-full py-3 px-4 rounded-l-md",
+                filter: "h-full w-full px-4 py-3"
             },
         },
         defaultVariants: {

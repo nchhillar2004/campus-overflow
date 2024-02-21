@@ -23,7 +23,7 @@ export default function Sidebar() {
     }, [selectedOption]);
 
     return (
-        <aside className="desktop-menu sticky bg-background z-10 h-[70vh] w-fit top-0 flex">
+        <aside className="desktop-menu sticky bg-background z-10 h-[100vh] w-fit top-0 flex">
             <div className="flex flex-col w-[180px] py-4 pl-8 sticky">
                 <nav>
                     <SidebarButton

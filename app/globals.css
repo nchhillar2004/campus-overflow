@@ -22,6 +22,9 @@ body,
         --bs-xl: 0 10px 24px hsla(0, 0%, 0%, 0.05),
             0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
         --button-bg: #1b75d0;
+        --info-heading: #FAECC6;
+        --info-border: #F4D27B;
+        --info-bg: #FDF7E7;
         --custom-grey: #e3e6e8;
         --custom-grey-fg: #636b74;
         --blue-bg: #edf5fd;
@@ -57,6 +60,8 @@ body,
     .dark {
         --custom-grey: #494d50;
         --blue-bg: #1c3854;
+        --info-border: #494D50;
+        --info-heading: #2D2E2F;
         --blue-fg: #b2d6fb;
         --link-fg: #b2d6fb;
         --grey-fg: #c8ccd0;

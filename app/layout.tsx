@@ -84,11 +84,7 @@ export default async function RootLayout({
                         <Navbar />
                         <Toaster />
                         <main className="flex h-auto items-center justify-center pt-[50px]">
-                            <div className="bhfs h-full w-full">
-                                <Suspense fallback={<Loading />}>
-                                    {children}
-                                </Suspense>
-                            </div>
+                            <div className="bhfs h-full w-full">{children}</div>
                         </main>
                         <Footer />
                     </ThemeProvider>
