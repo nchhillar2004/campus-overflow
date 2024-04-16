@@ -36,6 +36,7 @@ export const POST = async (request: Request) => {
                 author: { connect: { id: user?.id } },
                 tags: { connect: { id: tag?.id } },
                 time,
+                tagName: tags,
             },
         });
 

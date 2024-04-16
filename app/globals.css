@@ -214,6 +214,10 @@ textarea:focus {
     }
 }
 
+.loader2{
+    width: 32px !important;
+}
+
 .sidebar_option:hover,
 .sidebar_option:hover > p,
 .sidebar_option:hover > h3,

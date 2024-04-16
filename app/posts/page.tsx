@@ -22,7 +22,7 @@ interface Post {
     time: String;
     authorId: String;
     authorUsername: String;
-    tagIDs: String[];
+    tagName: String;
 }
 
 export default async function PostsPage() {
@@ -58,7 +58,7 @@ export default async function PostsPage() {
                                         author={post.authorUsername}
                                         content={post.body}
                                         time={post.time}
-                                        tags={post.tagIDs}
+                                        tagName={post.tagName}
                                         hrefUser={`/u/${post.authorUsername}`}
                                     />
                                 </li>

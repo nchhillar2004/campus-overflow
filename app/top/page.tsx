@@ -17,7 +17,7 @@ interface Question {
     time: String;
     authorId: String;
     authorUsername: String;
-    tagIDs: String[];
+    tagName: String;
 }
 
 export default async function Questions() {
@@ -51,7 +51,7 @@ export default async function Questions() {
                                             author={question.authorUsername}
                                             content={question.body}
                                             time={question.time}
-                                            tags={question.tagIDs}
+                                            tagName={question.tagName}
                                             hrefUser={`/u/${question.authorId}`}
                                         />
                                     </li>

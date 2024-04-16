@@ -50,7 +50,7 @@ export default function Navbar() {
 
           <div className="desktop-menu ">
             <Button variant="bhfs" size="round" asChild>
-              <Link href="/products">Products</Link>
+              <Link href="/about">About</Link>
             </Button>
           </div>
 
@@ -64,59 +64,63 @@ export default function Navbar() {
             </Button>
           </div>
 
-          <div className="h-full max-sm:overflow-x-scroll">
-            {session ? (
-              <div className="flex items-center h-full">
-                <Suspense fallback={<SmallLoading />}>
-                  <Button variant="bhfs" size="myIcon" asChild>
-                    <Link href="/u/profile">
-                      <Image
-                        fetchPriority="high"
-                        src={
-                          session.user?.picture ||
-                          session.user?._doc?.image ||
-                          session.user?.image
-                        }
-                        width={20}
-                        height={20}
-                        alt={session.user?.name}
-                        className="rounded-[4px]"
-                      />
-                    </Link>
-                  </Button>
+          {sessionStatus === "loading" ? (
+            <div className="min-w-[100px] flex justify-center"><SmallLoading /></div>
+          ) : (
+            <div className="h-full max-sm:overflow-x-scroll">
+              {session ? (
+                <div className="flex items-center h-full">
+                  <Suspense fallback={<SmallLoading />}>
+                    <Button variant="bhfs" size="myIcon" asChild>
+                      <Link href="/u/profile">
+                        <Image
+                          fetchPriority="high"
+                          src={
+                            session.user?.picture ||
+                            session.user?._doc?.image ||
+                            session.user?.image
+                          }
+                          width={20}
+                          height={20}
+                          alt={session.user?.name}
+                          className="rounded-[4px]"
+                        />
+                      </Link>
+                    </Button>
 
-                  <Button
-                    variant="bhfs"
-                    size="myIcon"
-                    asChild
-                    className="desktop-menu"
-                  >
-                    <Link href="/help">
-                      <HelpCircle />
-                    </Link>
+                    <Button
+                      variant="bhfs"
+                      size="myIcon"
+                      asChild
+                      className="desktop-menu"
+                    >
+                      <Link href="/help">
+                        <HelpCircle />
+                      </Link>
+                    </Button>
+                    <Button
+                      variant="bhfs"
+                      size="mySize"
+                      onClick={() => {
+                        signOut();
+                      }}
+                    >
+                      <LogOut />
+                    </Button>
+                  </Suspense>
+                </div>
+              ) : (
+                <div className="flex items-center h-full">
+                  <Button className="ml-2 z-0" variant="outline" asChild>
+                    <Link href="/auth/login">Login</Link>
                   </Button>
-                  <Button
-                    variant="bhfs"
-                    size="mySize"
-                    onClick={() => {
-                      signOut();
-                    }}
-                  >
-                    <LogOut />
+                  <Button className="ml-2 z-0" variant="blue" asChild>
+                    <Link href="/auth/register">Signup</Link>
                   </Button>
-                </Suspense>
-              </div>
-            ) : (
-              <div className="flex items-center h-full">
-                <Button className="ml-2 z-0" variant="outline" asChild>
-                  <Link href="/auth/login">Login</Link>
-                </Button>
-                <Button className="ml-2 z-0" variant="blue" asChild>
-                  <Link href="/auth/register">Signup</Link>
-                </Button>
-              </div>
-            )}
-          </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
       <Separator />

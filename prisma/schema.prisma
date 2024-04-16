@@ -16,8 +16,9 @@ model Posts {
   authorId       String?    @db.ObjectId
   createdAt      DateTime   @default(now())
   comments       Comments[]
-  tagIDs         String[]   @db.ObjectId
-  tags           Tags[]     @relation(fields: [tagIDs], references: [id])
+  tagName        String?
+  tags           Tags?      @relation(fields: [tagIDs], references: [id])
+  tagIDs         String?    @db.ObjectId
   time           String
   likes          Int?
 }
@@ -35,7 +36,7 @@ model Users {
   isBan      Boolean     @default(false)
   isTimeout  Boolean     @default(false)
   image      String
-  stars     Int         @default(0)
+  stars      Int         @default(0)
   address    Address?
   posts      Posts[]
   comments   Comments[]
@@ -43,8 +44,6 @@ model Users {
   answers    Answers[]
   time       String
   createdAt  DateTime    @default(now())
-  tagIDs     String[]    @db.ObjectId
-  tags       Tags[]      @relation(fields: [tagIDs], references: [id])
 }
 
 model Comments {
@@ -68,9 +67,10 @@ model Questions {
   answers        Answers[]
   time           String
   createdAt      DateTime  @default(now())
-  tagIDs         String[]  @db.ObjectId
   likes          Int?
-  tags           Tags[]    @relation(fields: [tagIDs], references: [id])
+  tagName        String?
+  tags           Tags?     @relation(fields: [tagIDs], references: [id])
+  tagIDs         String?   @db.ObjectId
 }
 
 model Answers {
@@ -78,8 +78,8 @@ model Answers {
   answer         String
   authorUsername String?
   question       Questions @relation(fields: [questionId], references: [id])
-  author         Users?     @relation(fields: [authorId], references: [id])
-  authorId       String?    @db.ObjectId
+  author         Users?    @relation(fields: [authorId], references: [id])
+  authorId       String?   @db.ObjectId
   questionId     String    @db.ObjectId
   time           String
   createdAt      DateTime  @default(now())
@@ -87,17 +87,11 @@ model Answers {
 }
 
 model Tags {
-  id          String      @id @default(auto()) @map("_id") @db.ObjectId
-  name        String      @unique
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String @unique
 
-  questionIDs String[]    @db.ObjectId
-  questions   Questions[] @relation(fields: [questionIDs], references: [id])
-
-  postIDs     String[]    @db.ObjectId
-  posts       Posts[]     @relation(fields: [postIDs], references: [id])
-
-  userIDs     String[]    @db.ObjectId
-  users       Users[]     @relation(fields: [userIDs], references: [id])
+  questions Questions[]
+  posts     Posts[]
 }
 
 type Address {

@@ -11,7 +11,7 @@ function Loading() {
 function SmallLoading() {
     return (
         <div className="flex items-center justify-center h-fit w-fit">
-            <div className="loader"></div>
+            <div className="loader loader2"></div>
         </div>
     );
 }

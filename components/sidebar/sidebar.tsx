@@ -4,15 +4,10 @@ import { Separator } from "@/components/ui/separator";
 import SidebarButton from "./sidebar-buttons";
 
 export default function Sidebar(props: { selectedOption: string }) {
-  const storageSelectedOption = localStorage.getItem("selectedOption");
-  const [selectedOption, setSelectedOption] = useState(() => {
-    storageSelectedOption === "home";
-    return storageSelectedOption;
-  });
+  const [selectedOption, setSelectedOption] = useState('');
 
   useEffect(() => {
-    localStorage.setItem("selectedOption", props.selectedOption);
-    setSelectedOption(props.selectedOption)
+    setSelectedOption(props.selectedOption);
   }, [props.selectedOption]);
 
   return (

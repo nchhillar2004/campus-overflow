@@ -43,10 +43,10 @@ const FormSchema = z
             .min(3, {
                 message: "Username must be at least 3 characters.",
             })
-            .max(16, {
-                message: "Username must be at most 16 characters.",
+            .max(20, {
+                message: "Username must be at most 20 characters.",
             })
-            .refine((data) => /^[a-z](?:[-a-z0-9]*[a-z0-9])?$/i.test(data), {
+            .refine((data) => /^(?!.*--)[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(data), {
                 message:
                     "Invalid username. Only lowercase letters, numbers, and hyphens(-) are allowed in between.",
             }),
@@ -61,11 +61,12 @@ const FormSchema = z
             .refine((data) => data.trim() !== "", {
                 message: "Password cannot be empty.",
             })
-            .refine((data) => /^(?=.*[0-9])[a-zA-Z0-9]{8,}$/.test(data), {
-                message: "Password should contain atleast one Number (0-9)",
-            }).refine((data) => /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/.test(data), {
-                message: "Password should contain atleast one Alphabet (a-z)",
+            .refine((data) => /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()-_=+{};:,<.>]{8,}$/.test(data), {
+                message: "Password should contain at least one number (0-9)",
+            }).refine((data) => /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9!@#$%^&*()-_=+{};:,<.>]{8,}$/.test(data), {
+                message: "Password should contain at least one alphabet (a-z)",
             }),
+            
         cpassword: z.string(),
     })
     .refine((data) => data.password === data.cpassword, {

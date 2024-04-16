@@ -4,26 +4,18 @@ import {
     Github,
     LifeBuoy,
     LogOut,
-    Mail,
-    MessageSquare,
-    PlusCircle,
     UserPlus,
     Users,
     Newspaper,
     InfoIcon,
     MessageCircleQuestion,
-    PackageOpen,
 } from "lucide-react";
 import {
     DropdownMenuContent,
     DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuPortal,
     DropdownMenuSeparator,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -80,41 +72,6 @@ export function MobileMenu() {
                     <Users className="mr-2 h-4 w-4" />
                     <span>Users</span>
                 </DropdownMenuItem>
-                <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                        <PackageOpen className="mr-2 h-4 w-4" />
-                        <span>Products</span>
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
-                            <DropdownMenuItem
-                                onClick={() => {
-                                    router.push("/products");
-                                }}
-                            >
-                                <Mail className="mr-2 h-4 w-4" />
-                                <span>Category1</span>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                                onClick={() => {
-                                    router.push("/products");
-                                }}
-                            >
-                                <MessageSquare className="mr-2 h-4 w-4" />
-                                <span>Category1</span>
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem
-                                onClick={() => {
-                                    router.push("/products");
-                                }}
-                            >
-                                <PlusCircle className="mr-2 h-4 w-4" />
-                                <span>More...</span>
-                            </DropdownMenuItem>
-                        </DropdownMenuSubContent>
-                    </DropdownMenuPortal>
-                </DropdownMenuSub>
                 <DropdownMenuItem>
                     <UserPlus className="mr-2 h-4 w-4" />
                     <span>Services</span>
