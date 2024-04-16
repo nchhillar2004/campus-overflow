@@ -1,0 +1,118 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Posts {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  body           String
+  authorUsername String?
+  author         Users?     @relation(fields: [authorId], references: [id])
+  authorId       String?    @db.ObjectId
+  createdAt      DateTime   @default(now())
+  comments       Comments[]
+  tagIDs         String[]   @db.ObjectId
+  tags           Tags[]     @relation(fields: [tagIDs], references: [id])
+  time           String
+  likes          Int?
+}
+
+model Users {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  name       String?
+  username   String      @unique
+  email      String      @unique
+  password   String?
+  role       Role        @default(USER)
+  plan       Plan        @default(FREE)
+  isAdmin    Boolean     @default(false)
+  isVerified Boolean     @default(false)
+  isBan      Boolean     @default(false)
+  isTimeout  Boolean     @default(false)
+  image      String
+  stars     Int         @default(0)
+  address    Address?
+  posts      Posts[]
+  comments   Comments[]
+  questions  Questions[]
+  answers    Answers[]
+  time       String
+  createdAt  DateTime    @default(now())
+  tagIDs     String[]    @db.ObjectId
+  tags       Tags[]      @relation(fields: [tagIDs], references: [id])
+}
+
+model Comments {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  comment   String
+  post      Posts    @relation(fields: [postId], references: [id])
+  author    Users    @relation(fields: [authorId], references: [id])
+  authorId  String   @db.ObjectId
+  postId    String   @db.ObjectId
+  time      String
+  createdAt DateTime @default(now())
+}
+
+model Questions {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  body           String
+  authorUsername String?
+  author         Users?    @relation(fields: [authorId], references: [id])
+  authorId       String?   @db.ObjectId
+  answers        Answers[]
+  time           String
+  createdAt      DateTime  @default(now())
+  tagIDs         String[]  @db.ObjectId
+  likes          Int?
+  tags           Tags[]    @relation(fields: [tagIDs], references: [id])
+}
+
+model Answers {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  answer         String
+  authorUsername String?
+  question       Questions @relation(fields: [questionId], references: [id])
+  author         Users?     @relation(fields: [authorId], references: [id])
+  authorId       String?    @db.ObjectId
+  questionId     String    @db.ObjectId
+  time           String
+  createdAt      DateTime  @default(now())
+  likes          Int?
+}
+
+model Tags {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  name        String      @unique
+
+  questionIDs String[]    @db.ObjectId
+  questions   Questions[] @relation(fields: [questionIDs], references: [id])
+
+  postIDs     String[]    @db.ObjectId
+  posts       Posts[]     @relation(fields: [postIDs], references: [id])
+
+  userIDs     String[]    @db.ObjectId
+  users       Users[]     @relation(fields: [userIDs], references: [id])
+}
+
+type Address {
+  street String
+  city   String
+  state  String
+  zip    String
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Plan {
+  FREE
+  PRO
+}
