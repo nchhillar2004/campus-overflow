@@ -13,7 +13,7 @@ interface Post {
     time: String;
     authorId: String;
     authorUsername: String;
-    tagIDs: String[];
+    tagName: String;
     likes: Number;
 }
 export default async function PostsTab(props: { username: String }) {
@@ -33,8 +33,8 @@ export default async function PostsTab(props: { username: String }) {
     const data = await user.json();
     const posts: Post[] = data?.posts;
     const mappedPosts = posts.map((post: Post) => {
-        const { _id, id, title, body, authorId, authorUsername, tagIDs, time, likes } = post;
-        return { _id, id, title, body, authorId, authorUsername, tagIDs, time, likes };
+        const { _id, id, title, body, authorId, authorUsername, tagName, time, likes } = post;
+        return { _id, id, title, body, authorId, authorUsername, tagName, time, likes };
     });
     const postCount = mappedPosts.length;
     
@@ -51,7 +51,7 @@ export default async function PostsTab(props: { username: String }) {
                             hrefUser={`/u/${post.authorUsername}`}
                             content={post.body}
                             author={post.authorUsername}
-                            tags={post.tagIDs}
+                            tagName={post.tagName}
                             time={post.time}
                         />
                     </li>

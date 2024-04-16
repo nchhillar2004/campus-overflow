@@ -12,7 +12,7 @@ interface Question {
     body: String;
     time: String;
     authorId: String;
-    tagIDs: String[];
+    tagName: String;
     likes: Number;
 }
 export default async function QuestionsTab(props: { username: String }) {
@@ -32,8 +32,8 @@ export default async function QuestionsTab(props: { username: String }) {
     const data = await user.json();
     const ques: Question[] = data?.questions;
     const mappedquess = ques.map((ques: Question) => {
-        const { _id, id, title, body, authorId, tagIDs, time, likes } = ques;
-        return { _id, id, title, body, authorId, tagIDs, time, likes };
+        const { _id, id, title, body, authorId, tagName, time, likes } = ques;
+        return { _id, id, title, body, authorId, tagName, time, likes };
     });
     const quesCount = mappedquess.length;
     return (
@@ -49,7 +49,7 @@ export default async function QuestionsTab(props: { username: String }) {
                             title={ques.title}
                             content={ques.body}
                             author={ques.authorId}
-                            tags={ques.tagIDs}
+                            tagName={ques.tagName}
                             time={ques.time}
                         />
                     </li>
