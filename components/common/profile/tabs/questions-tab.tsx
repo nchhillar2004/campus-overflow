@@ -11,7 +11,7 @@ interface Question {
     _id: null | undefined | Key | React.Key;
     body: String;
     time: String;
-    authorId: String;
+    authorUsername: String;
     tagName: String;
     likes: Number;
 }
@@ -32,23 +32,23 @@ export default async function QuestionsTab(props: { username: String }) {
     const data = await user.json();
     const ques: Question[] = data?.questions;
     const mappedquess = ques.map((ques: Question) => {
-        const { _id, id, title, body, authorId, tagName, time, likes } = ques;
-        return { _id, id, title, body, authorId, tagName, time, likes };
+        const { _id, id, title, body, authorUsername, tagName, time, likes } = ques;
+        return { _id, id, title, body, authorUsername, tagName, time, likes };
     });
     const quesCount = mappedquess.length;
     return (
         <TabsContent value="questions">
             <TypographyH1 title={`${quesCount} Questions`} />
             <CardContent className="mt-4">
-                {mappedquess.map((ques) => (
-                    <li key={ques._id} className="list-none">
+                {mappedquess.map((ques, index) => (
+                    <li key={index} className="list-none">
                         <PostCard
                             id={ques.id}
                             href={`/questions/${ques.id}`}
                             hrefUser={`/u/`}
                             title={ques.title}
                             content={ques.body}
-                            author={ques.authorId}
+                            author={ques.authorUsername}
                             tagName={ques.tagName}
                             time={ques.time}
                         />

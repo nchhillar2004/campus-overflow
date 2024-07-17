@@ -39,9 +39,9 @@ export default async function Questions() {
                         <FilterButtons/>
                         <Suspense fallback={<Loading />}>
                             <ul className="flex flex-col-reverse mt-5">
-                                {questions.map((question) => (
+                                {questions.map((question, index) => (
                                     <li
-                                        key={question._id}
+                                        key={index}
                                         className="list-none p-0 m-0"
                                     >
                                         <PostCard

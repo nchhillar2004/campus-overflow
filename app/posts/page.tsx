@@ -46,9 +46,9 @@ export default async function PostsPage() {
                     <FilterButtons />
                     <Suspense fallback={<Loading />}>
                         <ul className="flex flex-col-reverse mt-5">
-                            {posts.map((post) => (
+                            {posts.map((post, index) => (
                                 <li
-                                    key={post._id}
+                                    key={index}
                                     className="list-none p-0 m-0"
                                 >
                                     <PostCard

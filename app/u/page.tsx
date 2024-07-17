@@ -45,9 +45,9 @@ const Users = async () => {
                         </div>
                         <FilterButtons/>
                         <div className="flex justify-between flex-wrap mt-5 max-md:flex-col max-md:space-x-1">
-                            {data.map((user) => (
+                            {data.map((user, index) => (
                                 <li
-                                    key={user._id}
+                                    key={index}
                                     className="list-none p-1 w-[240px] max-md:w-full"
                                 >
                                     <div className="flex">

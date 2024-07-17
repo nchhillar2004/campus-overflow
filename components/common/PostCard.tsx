@@ -13,7 +13,7 @@ export default async function PostCard(props: {
   hrefUser: Url;
 }) {
   return (
-    <div className="card">
+    <div className="card mb-2">
       <div className="flex flex-col">
         <Link href={props.href}>
           <h1 className="text-[18px] font-medium">{props.title}</h1>

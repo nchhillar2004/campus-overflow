@@ -42,8 +42,8 @@ export default async function PostsTab(props: { username: String }) {
         <TabsContent value="posts">
             <TypographyH1 title={`${postCount} Posts`} />
             <CardContent className="mt-4">
-                {mappedPosts.map((post) => (
-                    <li key={post._id} className="list-none">
+                {mappedPosts.map((post, index) => (
+                    <li key={index} className="list-none">
                         <PostCard
                             id={post.id}
                             href={`/posts/${post.id}`}
