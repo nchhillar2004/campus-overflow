@@ -60,7 +60,7 @@ export default function Navbar() {
 
           <div className="flex md:hidden flex-1 w-full h-full items-center justify-center">
             <Button variant="bhfs" size="myIcon" onClick={toggleMobileSearch}>
-              <Search size={20} />
+              <Search size={19} />
             </Button>
           </div>
 

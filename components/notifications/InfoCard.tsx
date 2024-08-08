@@ -18,6 +18,7 @@ export default async function InfoCard(props: {
             <div className="info-content py-2 px-4 bg-[var(--info-bg)] dark:bg-background">
                 <p className="text-sm">{props.content}</p>
             </div>
+            { deployments && commits && version ? <>
             <div className="info-heading py-2 px-4 bg-[var(--info-heading)]">
                 <h1 className="text-base font-medium">Current Version - {version?.tag_name}</h1>
             </div>
@@ -76,7 +77,7 @@ export default async function InfoCard(props: {
                 <Link href={deployments[0]?.creator?.html_url} target="_blank">
                     Learn more &rarr;
                 </Link>
-            </div>
+            </div></> : <p className="py-2 px-4 text-sm text-red-600">Server error getting latest updates.</p>}
         </div>
     );
 }

@@ -4,7 +4,7 @@ import { TrendingUp } from "lucide-react";
 
 function TypographyH1(props: { title: string | undefined }) {
     return (
-        <h1 className="scroll-m-20 text-[24px] leading-none lg:text-[27px] tracking-tight">
+        <h1 className="scroll-m-20 text-[26px] dark:text-zinc-200 text-zinc-800 leading-none lg:text-[27px] tracking-tight">
             {props.title}
         </h1>
     );

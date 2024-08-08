@@ -27,6 +27,7 @@ body,
         --info-bg: #FDF7E7;
         --custom-grey: #e3e6e8;
         --custom-grey-fg: #636b74;
+        --orange: #E7700D;
         --blue-bg: #edf5fd;
         --link-fg: #1b75d0;
         --footer-fg: #C8CCD0;
@@ -67,6 +68,7 @@ body,
         --grey-fg: #c8ccd0;
         --black-225: #d6d9dc;
         --background: 210 3% 15%;
+        --orange: #E7700D;
         --foreground: 0 0% 98%;
         --card: 0 0% 3.9%;
         --card-foreground: 0 0% 98%;
@@ -224,8 +226,8 @@ textarea:focus {
 .sidebar_option--active,
 .sidebar_option--active > h3,
 .sidebar_option--active > p {
-    background-color: #fcecec;
-    color: #c04b37 !important;
+    background-color: var(--custom-grey) !important;
+    color: var(--orange) !important;
     font-weight: 500 !important;
 }
 

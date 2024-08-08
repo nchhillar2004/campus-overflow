@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { SiteLogo } from "../typography";
+import { ModeToggle } from "../theme-toggle-mode";
 
 export default function Footer() {
     return (
@@ -11,6 +12,7 @@ export default function Footer() {
                 <div className="h-[30px]">
                     <Link href="#top" className="flex items-center h-full w-full justify-center">Back to top</Link>
                 </div>
+                <ModeToggle/>
                 <Separator color="grey"/>
                 <div className="container">
                     <div className="footer-top flex h-fit w-full flex-col border-b pb-2">

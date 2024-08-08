@@ -12,11 +12,9 @@ export const getDeployments = async () => {
         const response = await githubAPI.get(
             `/repos/nchhillar2004/nextjs-finance-app/deployments`
         );
-
         return response.data;
     } catch (error) {
         console.error("Error fetching deployments:", error);
-        throw error;
     }
 };
 
@@ -29,7 +27,6 @@ export const getCommits = async () => {
         return response.data;
     } catch (error) {
         console.error("Error fetching commits:", error);
-        throw error;
     }
 };
 
@@ -41,6 +38,5 @@ export const getLatestVersion = async () => {
         return response.data;
     } catch (error) {
         console.error("Error fetching latest version:", error);
-        throw error;
     }
 };
