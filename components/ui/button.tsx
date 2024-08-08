@@ -31,7 +31,7 @@ const buttonVariants = cva(
                 auth: "h-fit px-3 py-[10px] w-full rounded-[6px]",
                 default: "h-8 px-3 py-2 rounded-[6px]",
                 sm: "h-9 rounded-md px-3",
-                lg: "h-11 rounded-md px-8",
+                lg: "h-11 rounded-md px-8 text-base",
                 icon: "h-10 w-10",
                 myIcon: "h-full w-fit px-2 rounded-[0px]",
                 mySize: "h-full w-fit px-2 rounded-[0px]",
@@ -42,7 +42,7 @@ const buttonVariants = cva(
         },
         defaultVariants: {
             variant: "default",
-            size: "default",
+            size: "lg",
         },
     }
 );

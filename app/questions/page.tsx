@@ -31,7 +31,7 @@ export default async function Questions() {
         <SidebarLayout  selectedOption={'questions'}>
                 <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
                     <div className="left lg:w-3/4 rounded-md h-full">
-                        <div className="flex  w-full items-center justify-between">
+                        <div className="flex w-full items-center justify-between">
                             <TypographyH1 title={`${questionsLength} Questions`} />
                             <Button variant="blue" asChild>
                                 <Link href="/questions/ask">Ask a question</Link>

@@ -27,44 +27,42 @@ export default async function Questions() {
     const questions: Question[] = await res.json();
 
     return (
-        <SidebarLayout  selectedOption={'home'}>
-                <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
-                    <div className="left lg:w-3/4 rounded-md h-full">
-                        <div className="flex  w-full items-center justify-between">
-                            <TypographyH1 title="Top Questions" />
-                            <Button variant="blue" asChild>
-                                <Link href="/questions/ask">Ask a question</Link>
-                            </Button>
-                        </div>
-                        <FilterButtons/>
-                        <Suspense fallback={<Loading />}>
-                            <ul className="flex flex-col-reverse mt-5">
-                                {questions.map((question, index) => (
-                                    <li
-                                        key={index}
-                                        className="list-none p-0 m-0"
-                                    >
-                                        <PostCard
-                                            href={`/questions/${question.id}`}
-                                            id={question.id}
-                                            title={question.title}
-                                            author={question.authorUsername}
-                                            content={question.body}
-                                            time={question.time}
-                                            tagName={question.tagName}
-                                            hrefUser={`/u/${question.authorId}`}
-                                        />
-                                    </li>
-                                ))}
-                            </ul>
-                        </Suspense>
+        <SidebarLayout selectedOption={"home"}>
+            <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
+                <div className="left lg:w-3/4 rounded-md h-full">
+                    <div className="flex  w-full items-center justify-between">
+                        <TypographyH1 title="Top Questions" />
+                        <Button variant="blue" asChild>
+                            <Link href="/questions/ask">Ask a question</Link>
+                        </Button>
                     </div>
-                    <div className="right lg:w-[22%] mb-4">
-                        <InfoCard heading="Features" content="Questions are by default aligned from most stars to least." />
-                    </div>
-
+                    <FilterButtons />
+                    <Suspense fallback={<Loading />}>
+                        <ul className="flex flex-col-reverse mt-5">
+                            {questions.map((question, index) => (
+                                <li key={index} className="list-none p-0 m-0">
+                                    <PostCard
+                                        href={`/questions/${question.id}`}
+                                        id={question.id}
+                                        title={question.title}
+                                        author={question.authorUsername}
+                                        content={question.body}
+                                        time={question.time}
+                                        tagName={question.tagName}
+                                        hrefUser={`/u/${question.authorId}`}
+                                    />
+                                </li>
+                            ))}
+                        </ul>
+                    </Suspense>
                 </div>
+                <div className="right lg:w-[22%] mb-4">
+                    <InfoCard
+                        heading="Features"
+                        content="Questions are by default aligned from most stars to least."
+                    />
+                </div>
+            </div>
         </SidebarLayout>
     );
 }
-
