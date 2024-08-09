@@ -7,6 +7,7 @@ export default function SidebarButton(props: {
     name: String;
     href: Url;
     selected: any;
+    icon: any;
 }) {
     return (
         <div>
@@ -18,7 +19,10 @@ export default function SidebarButton(props: {
                     props.selected && "sidebar_option--active"
                 }`}
             >
-                <Link href={props.href}>{props.name}</Link>
+                <Link href={props.href} className="flex items-center justify-between text-sm">
+                    {props.icon}
+                    <span className="text-base ml-2 flex-1 text-left overflow-hidden">{props.name}</span>
+                </Link>
             </Button>
         </div>
     );
