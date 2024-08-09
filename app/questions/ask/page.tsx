@@ -57,10 +57,9 @@ const CreatePost = () => {
     return (
         <>
             <SidebarLayout selectedOption={"questions"}>
-                {/* {session ? ( */}
                 <div className="container py-4">
                     <TypographyH1 title={"Ask a public question"} />
-                    <div className="mt-5 rounded-sm dark:bg-blue-950 bg-blue-900 px-8 py-4">
+                    <div className="mt-5 rounded-sm dark:bg-blue-950 bg-blue-400 px-8 py-4">
                         <h2 className="text-2xl">Writing a good question</h2>
                         <p className="my-2">
                             This form might help you ask a good and relevant

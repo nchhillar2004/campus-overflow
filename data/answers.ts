@@ -1,15 +1,14 @@
 import { connectDB } from "@/helpers/server-helper";
 import prisma from "@/prisma";
 
-export const getQuestionById = async (id: string | undefined) => {
+export const getAnswersById = async (id: string) => {
     try {
         await connectDB();
-        const question = await prisma.questions.findUnique({
+        const answer = await prisma.answers.findUnique({
             where: { id: id },
-            include: { answers: true },
         });
 
-        return question;
+        return answer;
     } catch {
         await prisma.$disconnect();
         return null;
