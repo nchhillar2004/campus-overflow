@@ -17,6 +17,7 @@ interface QuestionIdPageProps {
 
 export default async function QuestionId({ params }: QuestionIdPageProps) {
     const question = await getQuestionById(params.questionId);
+    const answers: Array<object> = [];
 
     const parseContent = (text: any) => {
         return text
@@ -36,7 +37,7 @@ export default async function QuestionId({ params }: QuestionIdPageProps) {
                     <hr className="my-5" />
                     <div className="box py-2 px-4 rounded-md">
                         <pre
-                            className="mb-4 text-lg text-wrap"
+                            className="mb-4 lg:text-lg text-base text-wrap font-sans"
                             dangerouslySetInnerHTML={{
                                 __html: parseContent(question?.body),
                             }}
@@ -49,7 +50,7 @@ export default async function QuestionId({ params }: QuestionIdPageProps) {
                 <hr className="my-4" />
                 <div className="answers min-h-[10vh]">
                     <div className="flex">
-                        <TypographyH1 title={`0 Answers`} />
+                        <TypographyH1 title={answers.length==1 ? `${answers.length} Answer` : `${answers.length} Answers` } />
                         <Button variant="blue" asChild>
                             Answer
                         </Button>

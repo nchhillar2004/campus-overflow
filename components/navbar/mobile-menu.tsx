@@ -25,7 +25,7 @@ export function MobileMenu() {
     const { data: session, update: sessionUpdate }: any = useSession();
     
     return (
-        <DropdownMenuContent className="w-56">
+        <DropdownMenuContent className="w-56 lg:ml-4 ml-1">
             <DropdownMenuLabel>Menu</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>

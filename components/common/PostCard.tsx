@@ -16,7 +16,7 @@ export default async function PostCard(props: {
         <div className="card mb-2">
             <div className="flex flex-col">
                 <Link href={props.href}>
-                    <h1 className="text-[20px] font-medium">{props.title}</h1>
+                    <h1 className="text-[20px] font-medium text-ellipsis line-clamp-2">{props.title}</h1>
                 </Link>
                 <p className="flex text-sm text-slate-500">
                     By:
@@ -27,7 +27,7 @@ export default async function PostCard(props: {
                         {props.author}
                     </Link>
                 </p>
-                <p className="my-2 overflow-hidden text-ellipsis line-clamp-4">
+                <p className="my-2 overflow-hidden text-ellipsis lg:line-clamp-4 line-clamp-3">
                     {props.content}
                 </p>
                 <ul className="flex tag">
