@@ -9,6 +9,7 @@ import {
     Newspaper,
     InfoIcon,
     MessageCircleQuestion,
+    Code,
 } from "lucide-react";
 import {
     DropdownMenuContent,
@@ -84,11 +85,11 @@ export function MobileMenu() {
             </DropdownMenuItem>
             <DropdownMenuItem
                 onClick={() => {
-                    router.push("/help");
+                    router.push("/developer");
                 }}
             >
-                <LifeBuoy className="mr-2 h-4 w-4" />
-                <span>Support</span>
+                <Code className="mr-2 h-4 w-4" />
+                <span>Developer</span>
             </DropdownMenuItem>
             {}
             {session?.user?.isAdmin ? (

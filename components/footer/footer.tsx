@@ -6,18 +6,16 @@ import { ModeToggle } from "../theme-toggle-mode";
 
 export default function Footer() {
     return (
-        <footer className="bg-[var(--custom-grey)]">
+        <footer className="z-20 bg-[var(--custom-grey)]">
             <Separator/>
             <div className="footer-container text-[15px]">
                 <div className="h-[30px]">
                     <Link href="#top" className="flex items-center h-full w-full justify-center">Back to top</Link>
                 </div>
-                <ModeToggle/>
                 <Separator color="grey"/>
                 <div className="container">
                     <div className="footer-top flex h-fit w-full flex-col border-b pb-2">
                         <SiteLogo />
-
                         <div className="flex flex-wrap w-full items-start justify-between">
                             <nav className="w-fit p-2">
                                 <h3>BHFS</h3>
@@ -81,8 +79,10 @@ export default function Footer() {
                                     <li>
                                         <Link href="/">GitHub</Link>
                                     </li>
+                                    
                                 </ul>
                             </nav>
+                            
                         </div>
                     </div>
                     <div className="footer-bottom py-5 flex items-center">
@@ -96,6 +96,7 @@ export default function Footer() {
                                     Copyright © 2023 BHFS Pty Limited
                                 </p>
                             </div>
+                            <ModeToggle/>
                         </div>
                     </div>
                 </div>

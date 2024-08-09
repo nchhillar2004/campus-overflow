@@ -12,8 +12,8 @@ export default function Sidebar(props: { selectedOption: string }) {
   }, [props.selectedOption]);
 
   return (
-    <aside className="desktop-menu sticky bg-background z-10 h-[100vh] w-fit top-0 flex">
-      <div className="flex flex-col w-fit max-w-[200px] py-4 pl-8 sticky">
+    <aside aria-label="Sidebar" className="fixed top-[50px] desktop-menu bg-background z-10 h-[100vh] w-fit flex">
+      <div className="flex flex-col w-fit max-w-[200px] py-4 pl-8">
         <nav>
           <SidebarButton
             name="Home"

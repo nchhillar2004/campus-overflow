@@ -1,8 +1,4 @@
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { Loading } from "./loading";
 import Sidebar from "./sidebar/sidebar";
-import { Suspense } from "react";
-import { ScrollBar } from "./ui/scroll-area";
 
 export default function SidebarLayout({
     children,
@@ -15,12 +11,7 @@ export default function SidebarLayout({
         <div className="flex">
             <Sidebar selectedOption={selectedOption} />
 
-            <main className="w-full px-4 py-4 lg:py-5 lg:px-6">
-                <ScrollArea>
-                    <Suspense fallback={<Loading />}>{children}</Suspense>
-                    <ScrollBar />
-                </ScrollArea>
-            </main>
+            <main className="w-full px-4 py-4 lg:py-5 lg:pr-6 lg:pl-[14.5rem] min-h-[100vh]">{children}</main>
         </div>
     );
 }

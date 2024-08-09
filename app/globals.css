@@ -140,7 +140,7 @@ textarea:focus {
 .card {
     background-color: var(--background);
     border-radius: 2px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--custom-grey);
     padding: 16px;
     overflow: hidden;
     width: 100%;
@@ -184,7 +184,7 @@ textarea:focus {
     padding: 16px;
     border-radius: 4px;
     display: flex;
-    background-color: white;
+    /* background-color: var(--custom-grey); */
 }
 
 .usercard h1 {
@@ -231,7 +231,7 @@ textarea:focus {
 .sidebar_option--active,
 .sidebar_option--active > h3,
 .sidebar_option--active > p {
-    background-color: var(--custom-grey) !important;
+    background-color: var(--info-bg) !important;
     color: var(--orange) !important;
     font-weight: 500 !important;
 }

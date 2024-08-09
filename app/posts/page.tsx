@@ -38,7 +38,7 @@ export default async function PostsPage() {
             <div className="flex flex-col-reverse justify-between lg:flex-row h-full">
                 <div className="left lg:w-3/4 rounded-md h-full">
                     <div className="flex  w-full items-center justify-between">
-                        <TypographyH1 title={`${postsLength} Posts`} />
+                        <TypographyH1 title={`${postsLength==1 ? `${postsLength} Post` : `${postsLength} Posts`}`} />
                         <Button variant="blue" asChild>
                             <Link href="/posts/create">Create a post</Link>
                         </Button>

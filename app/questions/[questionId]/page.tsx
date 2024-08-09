@@ -5,7 +5,6 @@ import SiteConfig from "@/config/site";
 import { getQuestionById } from "@/data/question";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getAnswersById } from "@/data/answers";
 import AnswerForm from "./AnswerForm";
 import AnswerCard from "@/components/common/AnswerCard";
 

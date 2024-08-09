@@ -9,6 +9,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { IconButton } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
+import { BadgeCheck } from "lucide-react";
 
 export default function UserProfileCard(props: {
     fname: string;
@@ -25,7 +26,7 @@ export default function UserProfileCard(props: {
             <div className="rounded-md h-full min-h-[70vh]">
                 <div className="flex flex-col lg:flex-row z-1 top-0 lg:-top-[11rem] h-[60%] w-full lg:justify-between lg:w-[96%] m-auto">
                     <div className="left w-full lg:w-[80%]">
-                        <div className="usercard flex-col lg:flex-row lg:items-start w-full ">
+                        <div className="usercard flex-col lg:flex-row lg:items-start w-full mb-5">
                             <Image
                                 src={props.image}
                                 height={120}
@@ -41,11 +42,9 @@ export default function UserProfileCard(props: {
                                                 <h1 className="font-[24px] mr-1">
                                                     {props.fname}
                                                 </h1>
-                                                <Image
-                                                    src="/verified.png"
-                                                    width={20}
-                                                    height={20}
-                                                    alt="Verified user"
+                                                <BadgeCheck
+                                                    fill="var(--orange)"
+                                                    stroke="white"
                                                 />
                                             </div>
                                         ) : (
@@ -74,9 +73,7 @@ export default function UserProfileCard(props: {
                                     <div className="flex space-x-2">
                                         <Tooltip title="Like">
                                             <Button variant="icon">
-                                                <IconButton>
-                                                    <FavoriteBorderIcon className="mr-1" />
-                                                </IconButton>
+                                                <FavoriteBorderIcon className="mr-1" />
                                             </Button>
                                         </Tooltip>
                                     </div>
@@ -128,7 +125,9 @@ export default function UserProfileCard(props: {
                                 <h1>Contact</h1>
                                 <Separator />
                                 <h1>{props.fname}</h1>
-                                <Button variant='blue' disabled>Message</Button>
+                                <Button variant="blue" disabled>
+                                    Message
+                                </Button>
                             </div>
                         )}
                     </div>

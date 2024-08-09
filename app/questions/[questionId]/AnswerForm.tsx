@@ -8,7 +8,7 @@ import { TypographyH2 } from "@/components/typography";
 import { Button } from "@/components/ui/button";
 
 interface ParamsProps {
-    id: string
+    id: string;
 }
 
 export default function AnswerForm({ id }: ParamsProps) {
@@ -31,14 +31,13 @@ export default function AnswerForm({ id }: ParamsProps) {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*"
                     },
                     body: JSON.stringify({
                         answer,
                         authorUsername,
                         authorId,
                         time,
-                        questionId
+                        questionId,
                     }),
                 });
                 if (res.status === 200) {
@@ -51,52 +50,56 @@ export default function AnswerForm({ id }: ParamsProps) {
         }
     };
     return (
-            <section>
-                <div className="py-4">
-                    <TypographyH2 title={"Give your answer"} />
-                    <div className="mt-5 rounded-sm dark:bg-blue-950 bg-blue-400 px-8 py-4">
-                        <h2 className="text-2xl">Writing a good answer</h2>
-                        <p className="my-2">
-                            This form might help you give a good and relevant
-                            answer
-                        </p>
+        <section>
+            <div className="py-4">
+                <TypographyH2 title={"Give your answer"} />
+                <div className="mt-5 rounded-sm dark:bg-blue-950 bg-blue-400 px-8 py-4">
+                    <h2 className="text-2xl">Writing a good answer</h2>
+                    <p className="my-2">
+                        This form might help you give a good and relevant answer
+                    </p>
 
-                        <small>
-                            <b>Steps</b>
-                            <ul className="list-disc list-inside">
-                                <li>Do NOT spam or give incorrect answer.</li>
-                                <li>
-                                    Explain your answer well so others user can
-                                    understand and get correct knowledge.
-                                </li>
-                                <li>
-                                    Write text inside Asterisk(*) to make it
-                                    bold.
-                                </li>
-                                <li>
-                                    Write code inside tipple back-quote or
-                                    backtick( ` ).
-                                </li>
-                            </ul>
-                        </small>
-                    </div>
-                    <div className="w-full mt-4">
-                        <form onSubmit={handlePost} className="inputfld">
-                            <div className="bg-[var(--custom-grey)] px-4 py-2 rounded-sm mb-2">
-                                <label htmlFor="content">Answer</label>
-                                <textarea
-                                    className="min-h-[250px] mt-2"
-                                    id="content"
-                                    name="content"
-                                    placeholder="Explain your answer"
-                                />
-                            </div>
+                    <small>
+                        <b>Steps</b>
+                        <ul className="list-disc list-inside">
+                            <li>Do NOT spam or give incorrect answer.</li>
+                            <li>
+                                Explain your answer well so others user can
+                                understand and get correct knowledge.
+                            </li>
+                            <li>
+                                Write text inside Asterisk(*) to make it bold.
+                            </li>
+                            <li>
+                                Write code inside tipple back-quote or backtick(
+                                ` ).
+                            </li>
+                        </ul>
+                    </small>
+                </div>
+                <div className="w-full mt-4">
+                    <form onSubmit={handlePost} className="inputfld">
+                        <div className="bg-[var(--custom-grey)] px-4 py-2 rounded-sm mb-2">
+                            <label htmlFor="content">Answer</label>
+                            <textarea
+                                className="min-h-[250px] mt-2"
+                                id="content"
+                                name="content"
+                                placeholder="Write your answer"
+                            />
+                        </div>
+                        {session ? (
                             <Button type="submit" size="lg" variant="blue">
                                 Answer
                             </Button>
-                        </form>
-                    </div>
+                        ) : (
+                            <Button type="submit" size="lg" variant="blue" disabled>
+                                Login to Answer
+                            </Button>
+                        )}
+                    </form>
                 </div>
-            </section>
+            </div>
+        </section>
     );
 }

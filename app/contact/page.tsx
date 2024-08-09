@@ -1,12 +1,17 @@
-import React from 'react'
-import { TypographyH1, TypographyH2, TypographyP, TypographyList } from '@/components/typography';
+import React from "react";
+import {
+    TypographyH1,
+} from "@/components/typography";
+import SidebarLayout from "@/components/sidebar-layout";
 
 export default function Contact() {
-  return (
-    <div>
-      <div className="container">
-      <TypographyH1 title="Contact"/>
-      </div>
-    </div>
-  )
+    return (
+        <SidebarLayout selectedOption="contact">
+            <div>
+                <div className="container">
+                    <TypographyH1 title="Contact" />
+                </div>
+            </div>
+        </SidebarLayout>
+    );
 }

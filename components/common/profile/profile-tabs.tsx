@@ -10,7 +10,7 @@ export function ProfileTabs(props: { username: String }) {
 
     return (
         <Tabs defaultValue="questions" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-2 dark:bg-zinc-700">
                 <TabsTrigger value="questions">Questions</TabsTrigger>
                 <TabsTrigger value="posts">Posts</TabsTrigger>
             </TabsList>
