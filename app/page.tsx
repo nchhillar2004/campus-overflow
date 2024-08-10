@@ -5,19 +5,21 @@ import { Separator } from "@/components/ui/separator";
 
 export default function HomePage() {
     return (
-        <div className="home-page w-full px-4 py-4 lg:py-5 lg:px-6">
-            <div className="container">
+        <div className="home-page container">
+            <section>
                 <div className="flex items-center justify-center flex-col min-h-[100vh]">
                     <h1 className="lg:text-[60px] text-[40px] font-bold dark:text-zinc-200 text-zinc-800">
-                        Every <span className="text-[var(--orange)]">student</span> has a tab open to Campus Overflow.
+                        Every{" "}
+                        <span className="text-[var(--orange)]">student</span>{" "}
+                        has a tab open to Campus Overflow.
                     </h1>
                     <Button variant="blue" size="lg" asChild className="mt-8">
                         <Link href="/questions">Get Started</Link>
                     </Button>
                 </div>
-            </div>
+            </section>
             <Separator orientation="horizontal" className="my-10" />
-            <section className="container py-4">
+            <section>
                 <div className="flex items-center justify-between lg:flex-row flex-col min-h-[60vh]">
                     <h1 className="lg:text-[60px] lg:text-left text-center text-[40px] lg:w-[48%] font-bold dark:text-zinc-200 text-zinc-800">
                         Explore the world of Finance with No.1 Q & A website
@@ -40,7 +42,7 @@ export default function HomePage() {
                 </div>
             </section>
             <Separator orientation="horizontal" className="my-10" />
-            <section className="container py-4">
+            <section>
                 <div className="flex items-center justify-between lg:flex-row-reverse flex-col min-h-[60vh]">
                     <h1 className="lg:text-[60px] lg:text-left text-center text-[40px] lg:w-[48%] font-bold dark:text-zinc-200 text-zinc-800">
                         Discover new trends and updates on Finance every second
@@ -63,7 +65,7 @@ export default function HomePage() {
                 </div>
             </section>
             <Separator orientation="horizontal" className="my-10" />
-            <section className="container py-4">
+            <section>
                 <div className="flex items-center justify-between lg:flex-row flex-col min-h-[60vh]">
                     <h1 className="lg:text-[60px] lg:text-left text-center text-[40px] lg:w-[48%] font-bold dark:text-zinc-200 text-zinc-800">
                         Create an account today and join the community

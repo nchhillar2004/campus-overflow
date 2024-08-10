@@ -149,6 +149,7 @@ export function RegisterForm() {
                             <FormControl>
                                 <Input
                                     placeholder="Enter your full name"
+                                    id="name"
                                     {...field}
                                 />
                             </FormControl>
@@ -167,6 +168,7 @@ export function RegisterForm() {
                             <FormControl>
                                 <Input
                                     placeholder="Create username"
+                                    id="username"
                                     {...field}
                                 />
                             </FormControl>
@@ -189,6 +191,7 @@ export function RegisterForm() {
                                 <Input
                                     type="email"
                                     placeholder="Enter your email address"
+                                    id="email"
                                     {...field}
                                 />
                             </FormControl>
@@ -211,6 +214,7 @@ export function RegisterForm() {
                                             showPassword ? "text" : "password"
                                         }
                                         placeholder="Create password atleast 8 characters"
+                                        id="password"
                                         {...field}
                                     />
                                     {showPassword ? (
@@ -256,6 +260,7 @@ export function RegisterForm() {
                                 <Input
                                     type="password"
                                     placeholder="Confirm password"
+                                    id="password"
                                     {...field}
                                 />
                             </FormControl>

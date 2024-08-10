@@ -1,5 +1,5 @@
 const isProduction = process.env.NODE_ENV === "production";
-const productionUrl = "https://nextjs-finance-app-lake.vercel.app";
+const productionUrl = "https://campus-overflow-nextjs.vercel.app";
 
 const SiteConfig = {
     title: "Campus Overflow",

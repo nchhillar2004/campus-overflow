@@ -23,7 +23,7 @@ export default function Login() {
     return (
         sessionStatus !== "authenticated" && (
             <div className="container py-10">
-                <div className="auth-card max-md:w-[94%] w-[50%] xl:w-[35%] 2xl:w-[28%] lg:w-[40%] text-center">
+                <div className="auth-card lg:p-8 p-6 max-md:w-[94%] w-[50%] xl:w-[35%] 2xl:w-[28%] lg:w-[40%] text-center">
                     <b>
                         <TypographyH1 title="Login" />
                     </b>

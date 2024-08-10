@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ["/"],
             },
         ],
-        sitemap: "https://campusOverflow.web.app/sitemap.xml",
+        sitemap: "https://campus-overflow-nextjs.vercel.app/sitemap.xml",
     };
 }

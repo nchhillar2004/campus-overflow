@@ -26,7 +26,7 @@ export default function Register() {
 
     return (
         sessionStatus !== "authenticated" && (
-            <div className="container py-5">
+            <div className="container py-10">
                 <div className="flex flex-row max-md:flex-col-reverse justify-evenly">
                     <div className="left flex flex-col items-center justify-center xl:w-[40%] 2xl:w-[32%] w-[50%] max-md:w-[94%] my-4 mx-auto">
                         <LargeSiteLogo />
@@ -58,7 +58,7 @@ export default function Register() {
                         </div>
                         <p className="text-[var(--grey-fg)] text-sm text-center">Collaborate and share knowledge with a private group for FREE.</p>
                     </div>
-                    <div className="auth-card max-md:w-[94%] xl:w-[40%] 2xl:w-[32%] w-[50%] text-center">
+                    <div className="auth-card lg:p-8 p-6 max-md:w-[94%] xl:w-[40%] 2xl:w-[32%] w-[50%] text-center">
                         <b>
                             <TypographyH1 title="Create your account" />
                         </b>

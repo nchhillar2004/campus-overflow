@@ -6,7 +6,7 @@ import { ModeToggle } from "../theme-toggle-mode";
 
 export default function Footer() {
     return (
-        <footer className="z-20 bg-[var(--custom-grey)]">
+        <footer className="relative z-20 bg-[var(--custom-grey)]">
             <Separator />
             <div className="footer-container text-[15px]">
                 <div className="h-[30px]">

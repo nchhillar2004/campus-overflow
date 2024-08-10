@@ -24,14 +24,14 @@ export const metadata: Metadata = {
         "India",
         "Nishant chhillar",
         "Campus Overflow",
-        "Financial services",
-        "Sumit Lohchab",
-        "Finance",
+        "Stack Overflow",
+        "Next.js",
+        "Q&A website"
     ],
     authors: [
         {
             name: "Nishant Chhillar",
-            url: "https://nishantchhillar.tech",
+            url: "https://campus-overflow-nextjs.vercel.app",
         },
     ],
     creator: "Nishant Chhillar",
@@ -72,13 +72,13 @@ export default async function RootLayout({
 
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className="flex flex-col justify-between">
+            <body suppressHydrationWarning>
                 <AuthProvider session={session}>
                     <ThemeProvider attribute="class" defaultTheme="light">
                         <Navbar />
                         <Toaster />
-                        <main className="flex h-auto items-center justify-center pt-[50px]">
-                            <div className="campusOverflow h-full w-full">
+                        <main className="pt-[50px]">
+                            <div className="campusOverflow">
                                 {children}
                             </div>
                         </main>

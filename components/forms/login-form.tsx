@@ -90,6 +90,7 @@ export function LoginForm() {
                             <FormControl>
                                 <Input
                                     placeholder="Enter your username"
+                                    id="username"
                                     {...field}
                                 />
                             </FormControl>
@@ -113,6 +114,7 @@ export function LoginForm() {
                                             showPassword ? "text" : "password"
                                         }
                                         placeholder="Enter your password"
+                                        id="password"
                                         {...field}
                                     />
                                     {showPassword ? (

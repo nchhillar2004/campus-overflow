@@ -10,7 +10,7 @@ const githubAPI = axios.create({
 export const getDeployments = async () => {
     try {
         const response = await githubAPI.get(
-            `/repos/nchhillar2004/nextjs-finance-app/deployments`
+            `/repos/nchhillar2004/campus-overflow/deployments`
         );
         return response.data;
     } catch (error) {
@@ -21,7 +21,7 @@ export const getDeployments = async () => {
 export const getCommits = async () => {
     try {
         const response = await githubAPI.get(
-            `/repos/nchhillar2004/nextjs-finance-app/commits`
+            `/repos/nchhillar2004/campus-overflow/commits`
         );
 
         return response.data;
@@ -33,7 +33,7 @@ export const getCommits = async () => {
 export const getLatestVersion = async () => {
     try {
         const response = await githubAPI.get(
-            `/repos/nchhillar2004/nextjs-finance-app/releases/latest`
+            `/repos/nchhillar2004/campus-overflow/releases/latest`
         );
         return response.data;
     } catch (error) {

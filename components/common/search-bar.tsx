@@ -17,6 +17,7 @@ export default function SearchBar() {
                         placeholder="Search.."
                         className="w-full py-1 rounded-md px-2 pl-[30px] text-[14px] border outline-[3px] outline-blue-400 border-[var(--black-225)]"
                         autoComplete="off"
+                        id="search"
                     />
                 </div>
             </form>

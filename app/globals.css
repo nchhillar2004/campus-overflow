@@ -242,5 +242,4 @@ textarea:focus {
     border-radius: 6px;
     text-align: start;
     box-shadow: var(--bs-xl) !important;
-    padding: 32px;
 }
