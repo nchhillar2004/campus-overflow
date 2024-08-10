@@ -2,6 +2,7 @@ import { ArrowBigDown, ArrowBigUp } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
+import { parseContent } from "@/helpers/parse-content";
 
 interface AnswerCardProps {
     answer: string;
@@ -44,7 +45,9 @@ export default function AnswerCard({
                 </div>
             </div>
             <div className="right flex flex-col flex-1 text-left ml-4 justify-between">
-                <p className="lg:text-base text-sm">{answer}</p>
+                <pre className="lg:text-base text-sm text-wrap font-sans" dangerouslySetInnerHTML={{
+                                __html: parseContent(answer),
+                            }}/>
                 <span>
                     By:{" "}
                     <Link href={`/u/${authorUsername}`}>{authorUsername}</Link>

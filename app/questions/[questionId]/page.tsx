@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import AnswerForm from "./AnswerForm";
 import AnswerCard from "@/components/common/AnswerCard";
+import { parseContent } from "@/helpers/parse-content";
 
 export const metadata = {
     title: `Questions - ${SiteConfig.title}`,
@@ -20,17 +21,6 @@ interface QuestionIdPageProps {
 
 export default async function QuestionId({ params }: QuestionIdPageProps) {
     const question = await getQuestionById(params.questionId);
-
-    console.log(question?.answers);
-
-    const parseContent = (text: any) => {
-        return text
-            .replace(
-                /```([\s\S]*?)```/g,
-                "<pre class='rounded-md px-4 py-2 dark:bg-zinc-900 bg-zinc-100 lg:text-wrap lg:overflow-hidden overflow-scroll' style='margin: 16px 0px;'><code class='text-zinc-600 dark:text-zinc-400'>$1</code></pre>"
-            )
-            .replace(/\*(.*?)\*/g, "<b>$1</b>");
-    };
 
     return (
         <SidebarLayout selectedOption={"questions"}>
