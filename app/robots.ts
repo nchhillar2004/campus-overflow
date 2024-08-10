@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ["/"],
             },
         ],
-        sitemap: "https://baba-haridas-finance.web.app/sitemap.xml",
+        sitemap: "https://campusOverflow.web.app/sitemap.xml",
     };
 }

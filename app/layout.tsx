@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     metadataBase: new URL(SiteConfig.url),
     description: SiteConfig.description,
     keywords: [
-        "BHFS",
-        "Baba haridas finance",
+        "campusOverflow",
+        "Campus Overflow",
         "Delhi",
         "India",
         "Nishant chhillar",
-        "Baba haridas financial services",
+        "Campus Overflow",
         "Financial services",
         "Sumit Lohchab",
         "Finance",
@@ -74,14 +74,13 @@ export default async function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <body className="flex flex-col justify-between">
                 <AuthProvider session={session}>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="light"
-                    >
+                    <ThemeProvider attribute="class" defaultTheme="light">
                         <Navbar />
                         <Toaster />
                         <main className="flex h-auto items-center justify-center pt-[50px]">
-                            <div className="bhfs h-full w-full">{children}</div>
+                            <div className="campusOverflow h-full w-full">
+                                {children}
+                            </div>
                         </main>
                         <Footer />
                     </ThemeProvider>

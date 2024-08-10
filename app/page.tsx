@@ -8,8 +8,8 @@ export default function HomePage() {
         <div className="home-page w-full px-4 py-4 lg:py-5 lg:px-6">
             <div className="container">
                 <div className="flex items-center justify-center flex-col min-h-[100vh]">
-                    <h1 className="lg:text-[80px] text-[60px] font-bold dark:text-zinc-200 text-zinc-800">
-                        Baba Haridas Financial Services
+                    <h1 className="lg:text-[60px] text-[40px] font-bold dark:text-zinc-200 text-zinc-800">
+                        Every <span className="text-[var(--orange)]">student</span> has a tab open to Campus Overflow.
                     </h1>
                     <Button variant="blue" size="lg" asChild className="mt-8">
                         <Link href="/questions">Get Started</Link>
@@ -25,7 +25,8 @@ export default function HomePage() {
                     <div className="right lg:w-[48%] text-center">
                         <p className="lg:text-[24px] text-[20px] dark:text-zinc-100 text-zinc-900">
                             Explore the world of Finance with
-                            question-and-answering. Ask questions, learn,  help others and share financial knowledge.
+                            question-and-answering. Ask questions, learn, help
+                            others and share financial knowledge.
                         </p>
                         <Button
                             variant="blue"
@@ -46,7 +47,9 @@ export default function HomePage() {
                     </h1>
                     <div className="right lg:w-[48%] text-center">
                         <p className="lg:text-[24px] text-[20px] dark:text-zinc-100 text-zinc-900">
-                            Explore new posts and create post to help the community grow. Share your everyday experience and new updates with everyone in the community.
+                            Explore new posts and create post to help the
+                            community grow. Share your everyday experience and
+                            new updates with everyone in the community.
                         </p>
                         <Button
                             variant="blue"
@@ -67,7 +70,8 @@ export default function HomePage() {
                     </h1>
                     <div className="right lg:w-[48%] text-center">
                         <p className="lg:text-[24px] text-[20px] dark:text-zinc-100 text-zinc-900">
-                            Join our mission by creating an account and empower the world with your knowledge and help others.
+                            Join our mission by creating an account and empower
+                            the world with your knowledge and help others.
                         </p>
                         <Button
                             variant="blue"

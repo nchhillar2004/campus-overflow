@@ -9,9 +9,9 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
-                bhfs: "bg-background hover:bg-[var(--custom-grey)] text-[var(--grey-fg)]",
-                default:
-                    "bg-primary text-primary-foreground",
+                campusOverflow:
+                    "bg-background hover:bg-[var(--custom-grey)] text-[var(--grey-fg)]",
+                default: "bg-primary text-primary-foreground",
                 destructive:
                     "bg-destructive text-destructive-foreground hover:bg-destructive/90",
                 outline:
@@ -23,9 +23,10 @@ const buttonVariants = cva(
                 blue: "bg-[var(--button-bg)] text-white hover:bg-[#1768b9]",
                 theme: "bg-[#edf5fd] dark:bg-[#494D50]",
                 icon: "bg-transparent w-fit h-fit",
-                sidebar: "bg-background hover:bg-[#f2f5f7] text-center text-[var(--grey-fg)] hover:text-foreground hover:font-semibold",
+                sidebar:
+                    "bg-background hover:bg-[#f2f5f7] text-center text-[var(--grey-fg)] hover:text-foreground hover:font-semibold",
                 selected: "bg-[var(--custom-grey)] font-semibold bg-background",
-                filter: "bg-background hover:bg-accent"
+                filter: "bg-background hover:bg-accent",
             },
             size: {
                 auth: "h-fit px-3 py-[10px] w-full rounded-[6px]",
@@ -37,7 +38,7 @@ const buttonVariants = cva(
                 mySize: "h-full w-fit px-2 rounded-[0px]",
                 round: "h-fit w-fit py-2 px-3 rounded-[16px]",
                 sidebar: "w-full py-3 px-4 rounded-l-md",
-                filter: "h-full w-full px-4 py-3"
+                filter: "h-full w-full px-4 py-3",
             },
         },
         defaultVariants: {
@@ -54,7 +55,7 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant, size, asChild = false , ...props }, ref) => {
+    ({ className, variant, size, asChild = false, ...props }, ref) => {
         const Comp = asChild ? Slot : "button";
         return (
             <Comp

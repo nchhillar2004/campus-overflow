@@ -80,39 +80,43 @@ const CreatePost = () => {
                                     bold.
                                 </li>
                                 <li>
-                                    Do NOT post abusive words, hate speech, racism or any propaganda.
+                                    Do NOT post abusive words, hate speech,
+                                    racism or any propaganda.
                                 </li>
                             </ul>
                         </small>
                     </div>
                     <div className="w-full mt-4">
                         <form onSubmit={handlePost} className="inputfld">
-                        <div className="bg-[var(--info-bg)] px-4 py-2 rounded-sm mb-2">
-                            <label htmlFor="title">Post title</label>
-                            <input
-                                type="text"
-                                id="title"
-                                name="title"
-                                className="mt-2"
-                                placeholder="Post title"
-                            /></div>
                             <div className="bg-[var(--info-bg)] px-4 py-2 rounded-sm mb-2">
-                            <label htmlFor="content">Post Content</label>
-                            <textarea
-                                className="min-h-[150px] mt-2"
-                                id="content"
-                                name="content"
-                                placeholder="Content..."
-                            /></div>
+                                <label htmlFor="title">Post title</label>
+                                <input
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    className="mt-2"
+                                    placeholder="Post title"
+                                />
+                            </div>
                             <div className="bg-[var(--info-bg)] px-4 py-2 rounded-sm mb-2">
-                            <label htmlFor="tag">Add custom tag</label>
-                            <input
-                                type="text"
-                                placeholder="#bhfs"
-                                id="tag"
-                                name="tag"
-                                className="lg:mr-4 mt-2"
-                            /></div>
+                                <label htmlFor="content">Post Content</label>
+                                <textarea
+                                    className="min-h-[150px] mt-2"
+                                    id="content"
+                                    name="content"
+                                    placeholder="Content..."
+                                />
+                            </div>
+                            <div className="bg-[var(--info-bg)] px-4 py-2 rounded-sm mb-2">
+                                <label htmlFor="tag">Add custom tag</label>
+                                <input
+                                    type="text"
+                                    placeholder="#campusOverflow"
+                                    id="tag"
+                                    name="tag"
+                                    className="lg:mr-4 mt-2"
+                                />
+                            </div>
                             <Button type="submit" variant="blue">
                                 Post
                             </Button>

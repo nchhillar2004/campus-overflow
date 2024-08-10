@@ -7,18 +7,23 @@ import { ModeToggle } from "../theme-toggle-mode";
 export default function Footer() {
     return (
         <footer className="z-20 bg-[var(--custom-grey)]">
-            <Separator/>
+            <Separator />
             <div className="footer-container text-[15px]">
                 <div className="h-[30px]">
-                    <Link href="#top" className="flex items-center h-full w-full justify-center">Back to top</Link>
+                    <Link
+                        href="#top"
+                        className="flex items-center h-full w-full justify-center"
+                    >
+                        Back to top
+                    </Link>
                 </div>
-                <Separator color="grey"/>
+                <Separator color="grey" />
                 <div className="container">
                     <div className="footer-top flex h-fit w-full flex-col border-b pb-2">
                         <SiteLogo />
                         <div className="flex flex-wrap w-full items-start justify-between">
                             <nav className="w-fit p-2">
-                                <h3>BHFS</h3>
+                                <h3>campusOverflow</h3>
                                 <ul className="nopad">
                                     <li>
                                         <Link href="/">Home</Link>
@@ -79,24 +84,23 @@ export default function Footer() {
                                     <li>
                                         <Link href="/">GitHub</Link>
                                     </li>
-                                    
                                 </ul>
                             </nav>
-                            
                         </div>
                     </div>
                     <div className="footer-bottom py-5 flex items-center">
                         <div className="fright w-11/12">
                             <div className="copyright">
                                 <p className="text-neutral-400 text-[11px] text-center">
-                                    BHFS ® is a registered Trademark of Baba
-                                    Haridas Financial Services Pty Limited &
-                                    BHFS Online India Private Limited.
+                                    campusOverflow ® is a registered Trademark
+                                    of Baba Haridas Financial Services Pty
+                                    Limited & campusOverflow Online India
+                                    Private Limited.
                                     <br></br>
-                                    Copyright © 2023 BHFS Pty Limited
+                                    Copyright © 2023 campusOverflow Pty Limited
                                 </p>
                             </div>
-                            <ModeToggle/>
+                            <ModeToggle />
                         </div>
                     </div>
                 </div>

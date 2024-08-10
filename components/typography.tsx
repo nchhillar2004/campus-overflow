@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { TrendingUp } from "lucide-react";
+import { Code2 } from "lucide-react";
 
 function TypographyH1(props: { title: string | undefined }) {
     return (
@@ -57,8 +57,8 @@ function TypographyCode(props: { code: string | number }) {
 function SiteLogo() {
     return(
         <Link href='/' className="h-full w-fit text-[18px] lg:text-[20px] px-2 lg:px-5 items-center hover:bg-[var(--custom-grey)] text-foreground flex">
-            <TrendingUp className="mr-1 text-[#e7700d]"/>
-            BH<p className="font-semibold ml-[2px]">Finance</p>
+            <Code2 className="mr-1 text-[#e7700d]"/>
+            campus<p className="font-bold ml-[2px]">Overflow</p>
         </Link>
     )
 }
@@ -66,8 +66,8 @@ function SiteLogo() {
 function LargeSiteLogo() {
     return(
         <Link href='/' className="w-fit text-[26px] lg:text-[32px] items-center text-foreground flex">
-            <TrendingUp className="mr-1 text-[#e7700d]" size={40} />
-            BH<p className="font-semibold ml-[2px]">Finance</p>
+            <Code2 className="mr-1 text-[#e7700d]" size={40} />
+            campus<p className="font-bold ml-[2px]">Overflow</p>
         </Link>
     )
 }

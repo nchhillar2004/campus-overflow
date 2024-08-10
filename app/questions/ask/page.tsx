@@ -103,7 +103,7 @@ const CreatePost = () => {
                                     className="mt-2"
                                 />
                             </div>
-                            
+
                             <div className="bg-[var(--info-bg)] px-4 py-2 rounded-sm mb-2">
                                 <label htmlFor="content">
                                     Question Content
@@ -119,13 +119,13 @@ const CreatePost = () => {
                                 <label htmlFor="tag">Add custom tag</label>
                                 <input
                                     type="text"
-                                    placeholder="#bhfs"
+                                    placeholder="#campusOverflow"
                                     id="tag"
                                     name="tag"
                                     className="lg:mr-4 mt-2"
                                 />
                             </div>
-                            <Button type="submit" size='lg' variant="blue">
+                            <Button type="submit" size="lg" variant="blue">
                                 Ask
                             </Button>
                         </form>
