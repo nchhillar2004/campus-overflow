@@ -59,7 +59,7 @@ export default async function Questions() {
                 <div className="right lg:w-[22%] mb-4">
                     <InfoCard
                         heading="Features"
-                        content="Questions are by default aligned from most stars to least."
+                        content="Questions are by default aligned from most likes to least."
                     />
                 </div>
             </div>

@@ -5,7 +5,8 @@ export const getPostsById = async (id: string | undefined) => {
     try {
         await connectDB();
         const post = await prisma.posts.findUnique({
-            where: { id: id }
+            where: { id: id },
+            include: {comments: true, author: true }
         });
 
         return post;

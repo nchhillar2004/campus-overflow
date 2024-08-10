@@ -26,6 +26,7 @@ model Posts {
 model Users {
   id         String      @id @default(auto()) @map("_id") @db.ObjectId
   name       String?
+  bio        String?
   username   String      @unique
   email      String      @unique
   password   String?
@@ -47,14 +48,15 @@ model Users {
 }
 
 model Comments {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  comment   String
-  post      Posts    @relation(fields: [postId], references: [id])
-  author    Users    @relation(fields: [authorId], references: [id])
-  authorId  String   @db.ObjectId
-  postId    String   @db.ObjectId
-  time      String
-  createdAt DateTime @default(now())
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  comment        String
+  authorUsername String?
+  post           Posts    @relation(fields: [postId], references: [id])
+  author         Users    @relation(fields: [authorId], references: [id])
+  authorId       String   @db.ObjectId
+  postId         String   @db.ObjectId
+  time           String
+  createdAt      DateTime @default(now())
 }
 
 model Questions {
