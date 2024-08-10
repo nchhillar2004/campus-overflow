@@ -12,7 +12,7 @@ export default function Sidebar(props: { selectedOption: string }) {
   }, [props.selectedOption]);
 
   return (
-    <aside aria-label="Sidebar" className="fixed top-[50px] desktop-menu bg-background z-10 h-[100vh] w-fit flex">
+    <aside aria-label="Sidebar" className="sticky top-[50px] border-r border-r-[solid var(--custom-grey)] min-h-[100vh] desktop-menu bg-background z-10 h-auto w-fit flex">
       <div className="flex flex-col w-fit max-w-[200px] py-4 pl-8">
         <nav>
           <SidebarButton
@@ -62,7 +62,6 @@ export default function Sidebar(props: { selectedOption: string }) {
           />
         </nav>
       </div>
-      <Separator orientation="vertical" />
     </aside>
   );
 }

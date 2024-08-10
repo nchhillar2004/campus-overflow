@@ -8,9 +8,11 @@ export default function SidebarLayout({
     selectedOption: string;
 }) {
     return (
-        <div className="relative flex">
+        <div className="flex items-start justify-between">
             <Sidebar selectedOption={selectedOption} />
-            <main className="w-full px-4 py-4 lg:py-5 lg:pr-6 lg:pl-[14.5rem] min-h-[100vh]">{children}</main>
+            <main className="flex-1 w-full px-4 py-4 lg:py-5 lg:px-6 min-h-[100vh]">
+                {children}
+            </main>
         </div>
     );
 }
