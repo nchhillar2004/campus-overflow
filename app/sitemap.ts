@@ -30,22 +30,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
-            url: `${URL}/products`,
-            lastModified: new Date(),
-            changeFrequency: "always",
-            priority: 1,
-        },
-        {
             url: `${URL}/about`,
             lastModified: new Date(),
             changeFrequency: "weekly",
             priority: 1,
-        },
-        {
-            url: `${URL}/services`,
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 0.8,
         },
         {
             url: `${URL}/contact`,
