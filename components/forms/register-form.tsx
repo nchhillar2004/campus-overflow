@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -18,6 +19,7 @@ import { time } from "@/utils/GetTime";
 import { image } from "@/utils/GetImage";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 const FormSchema = z
     .object({
@@ -46,27 +48,34 @@ const FormSchema = z
             .max(20, {
                 message: "Username must be at most 20 characters.",
             })
-            .refine((data) => /^(?!.*--)[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(data), {
-                message:
-                    "Invalid username. Only lowercase letters, numbers, and hyphens(-) are allowed in between.",
-            }),
+            .refine(
+                (data) => /^(?!.*--)[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(data),
+                {
+                    message:
+                        "Invalid username. Only lowercase letters, numbers, and hyphens(-) are allowed in between.",
+                }
+            ),
         email: z.string().email({
             message: "Invalid email address.",
         }),
         password: z
             .string()
-            .min(8, {
-                message: "Password must be 8 characters long.",
-            })
-            .refine((data) => data.trim() !== "", {
+            .min(1, {
                 message: "Password cannot be empty.",
             })
-            .refine((data) => /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()-_=+{};:,<.>]{8,}$/.test(data), {
-                message: "Password should contain at least one number (0-9)",
-            }).refine((data) => /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9!@#$%^&*()-_=+{};:,<.>]{8,}$/.test(data), {
-                message: "Password should contain at least one alphabet (a-z)",
-            }),
-            
+            .min(8, {
+                message: "Passwords must be at least 8 characters long.",
+            })
+            .refine(
+                (data) =>
+                    /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/.test(
+                        data
+                    ),
+                {
+                    message:
+                        "Make a strong password.",
+                }
+            ),
         cpassword: z.string(),
     })
     .refine((data) => data.password === data.cpassword, {
@@ -75,6 +84,7 @@ const FormSchema = z
     });
 
 export function RegisterForm() {
+    const [showPassword, setShowPassword] = React.useState(false);
     const router = useRouter();
 
     const form = useForm<z.infer<typeof FormSchema>>({
@@ -160,7 +170,9 @@ export function RegisterForm() {
                                     {...field}
                                 />
                             </FormControl>
-                            <FormDescription>Ex: test, test123 & test-user</FormDescription>
+                            <FormDescription>
+                                Ex: test, test123 & test-user
+                            </FormDescription>
                             <FormMessage>
                                 {fieldState?.error?.message}
                             </FormMessage>
@@ -193,13 +205,40 @@ export function RegisterForm() {
                         <FormItem>
                             <FormLabel>Password</FormLabel>
                             <FormControl>
-                                <Input
-                                    type="password"
-                                    placeholder="Create password atleast 8 characters"
-                                    {...field}
-                                />
+                                <div className="relative flex items-center">
+                                    <Input
+                                        type={
+                                            showPassword ? "text" : "password"
+                                        }
+                                        placeholder="Create password atleast 8 characters"
+                                        {...field}
+                                    />
+                                    {showPassword ? (
+                                        <EyeIcon
+                                            size={18}
+                                            className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10 bg-background"
+                                            onClick={() => {
+                                                showPassword
+                                                    ? setShowPassword(false)
+                                                    : setShowPassword(true);
+                                            }}
+                                        />
+                                    ) : (
+                                        <EyeOffIcon
+                                            size={18}
+                                            className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10 bg-background"
+                                            onClick={() => {
+                                                showPassword
+                                                    ? setShowPassword(false)
+                                                    : setShowPassword(true);
+                                            }}
+                                        />
+                                    )}
+                                </div>
                             </FormControl>
-                            <FormDescription>Password should contain both number & alphabets.</FormDescription>
+                            <FormDescription>
+                                Password should contain both number & alphabets.
+                            </FormDescription>
                             <FormMessage>
                                 {fieldState?.error?.message}
                             </FormMessage>

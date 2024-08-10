@@ -75,7 +75,7 @@ export default function HomePage() {
                             asChild
                             className="mt-4"
                         >
-                            <Link href="/auth/signup">Create account</Link>
+                            <Link href="/auth/register">Create account</Link>
                         </Button>
                     </div>
                 </div>

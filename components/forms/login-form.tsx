@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -16,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import toast from "react-hot-toast";
-
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 const FormSchema = z.object({
     username: z
         .string()
@@ -43,6 +44,7 @@ const FormSchema = z.object({
 });
 
 export function LoginForm() {
+    const [showPassword, setShowPassword] = React.useState(false);
     const router = useRouter();
 
     const form = useForm<z.infer<typeof FormSchema>>({
@@ -105,11 +107,36 @@ export function LoginForm() {
                         <FormItem>
                             <FormLabel>Password</FormLabel>
                             <FormControl>
-                                <Input
-                                    type="password"
-                                    placeholder="Enter your password"
-                                    {...field}
-                                />
+                                <div className="relative flex items-center">
+                                    <Input
+                                        type={
+                                            showPassword ? "text" : "password"
+                                        }
+                                        placeholder="Enter your password"
+                                        {...field}
+                                    />
+                                    {showPassword ? (
+                                        <EyeIcon
+                                            size={18}
+                                            className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10 bg-background"
+                                            onClick={() => {
+                                                showPassword
+                                                    ? setShowPassword(false)
+                                                    : setShowPassword(true);
+                                            }}
+                                        />
+                                    ) : (
+                                        <EyeOffIcon
+                                            size={18}
+                                            className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10 bg-background"
+                                            onClick={() => {
+                                                showPassword
+                                                    ? setShowPassword(false)
+                                                    : setShowPassword(true);
+                                            }}
+                                        />
+                                    )}
+                                </div>
                             </FormControl>
                             <FormMessage>
                                 {fieldState?.error?.message}
